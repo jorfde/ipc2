@@ -45,11 +45,11 @@
 }
 
 
-.doctorTitle{
-  -fx-background-color: #2196f3;
+.Title{
+  -fx-background-color: #373737;
 }
 .textForm{
--fx-background-color: #eeeeee;
+-fx-background-color: #757575;
 }
 .textFormInput{
  -fx-font-family: Arial;
