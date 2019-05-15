@@ -29,6 +29,19 @@
   -fx-font-family: Arial;
   -fx-text-fill: #ffffff;
 }
+
+.specialButton{
+-fx-background-radius: 10em;
+  -fx-background-color: #373737;
+  -fx-border: none;
+  -fx-padding: 15px ;
+  -fx-text-align: center;
+  -fx-text-decoration: none;
+  -fx-display: inline-block;
+  -fx-font-size: 14px;
+  -fx-font-family: Arial;
+  -fx-text-fill: #ffffff;
+}
 .dashboard{
  -fx-background-color: #ffffff;
 }
