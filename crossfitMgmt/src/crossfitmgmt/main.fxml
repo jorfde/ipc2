@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -12,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crossfitmgmt.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crossfitmgmt.MainController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar styleClass="bar" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -55,26 +56,43 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Line endX="184.0" layoutX="292.0" layoutY="82.0" startX="-124.0" strokeWidth="12.0" />
-            <Line endX="-100.0" endY="-97.5" layoutX="237.0" layoutY="131.0" startX="-100.0" strokeWidth="10.0" />
-            <Line endX="-100.0" endY="-97.5" layoutX="606.0" layoutY="131.0" startX="-100.0" strokeWidth="10.0" />
-            <Line endX="-100.0" endY="-69.5" layoutX="216.0" layoutY="117.0" startX="-100.0" strokeWidth="10.0" />
-            <Line endX="-100.0" endY="-69.5" layoutX="627.0" layoutY="117.0" startX="-100.0" strokeWidth="10.0" />
-            <Line endX="-100.0" endY="-37.5" layoutX="194.0" layoutY="101.0" startX="-100.0" startY="-7.5" strokeWidth="10.0" />
-            <Line endX="-100.0" endY="-37.5" layoutX="647.0" layoutY="101.0" startX="-100.0" startY="-7.5" strokeWidth="10.0" />
+            <Line endX="184.0" layoutX="292.0" layoutY="82.0" startX="-124.0" stroke="#373737" strokeWidth="12.0" />
+            <Line endX="-100.0" endY="-97.5" layoutX="237.0" layoutY="131.0" startX="-100.0" stroke="#373737" strokeWidth="10.0" />
+            <Line endX="-100.0" endY="-97.5" layoutX="606.0" layoutY="131.0" startX="-100.0" stroke="#373737" strokeWidth="10.0" />
+            <Line endX="-100.0" endY="-69.5" layoutX="216.0" layoutY="117.0" startX="-100.0" stroke="#373737" strokeWidth="10.0" />
+            <Line endX="-100.0" endY="-69.5" layoutX="627.0" layoutY="117.0" startX="-100.0" stroke="#373737" strokeWidth="10.0" />
+            <Line endX="-100.0" endY="-37.5" layoutX="194.0" layoutY="101.0" startX="-100.0" startY="-7.5" stroke="#373737" strokeWidth="10.0" />
+            <Line endX="-100.0" endY="-37.5" layoutX="647.0" layoutY="101.0" startX="-100.0" startY="-7.5" stroke="#373737" strokeWidth="10.0" />
             <Text layoutX="286.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text layoutX="156.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyTrainingPal">
+            <Text fill="#373737" layoutX="156.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyTrainingPal">
                <font>
                   <Font name="Roboto" size="52.0" />
                </font>
             </Text>
             <HBox layoutY="275.0" prefHeight="100.0" prefWidth="640.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="218.0" text="Get Started" />
-                  <Button mnemonicParsing="false" prefHeight="188.0" prefWidth="217.0" text="My Data" />
-                  <Button mnemonicParsing="false" prefHeight="140.0" prefWidth="225.0" text="Session Settings" />
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Get Started">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="167.0" text="My Data">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Session Settings">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
+            <Text fill="#373737" layoutX="240.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval Timer">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+            </Text>
       </children>
     </AnchorPane>
   </children>
