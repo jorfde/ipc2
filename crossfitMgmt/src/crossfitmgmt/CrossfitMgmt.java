@@ -19,7 +19,12 @@ public class CrossfitMgmt extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("main.fxml"));
+        
+        Parent root = myLoader.load();
+        
+        MainController mainController = myLoader.<MainController>getController();
+        mainController.initStage(stage);
         
         Scene scene = new Scene(root);
         
@@ -33,5 +38,7 @@ public class CrossfitMgmt extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
     
 }

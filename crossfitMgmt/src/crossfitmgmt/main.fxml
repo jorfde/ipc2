@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crossfitmgmt.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crossfitmgmt.MainController">
   <children>
     <MenuBar styleClass="bar" VBox.vgrow="NEVER">
       <menus>
@@ -71,17 +71,17 @@
             </Text>
             <HBox layoutY="275.0" prefHeight="100.0" prefWidth="640.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Get Started">
+                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="60.0" prefWidth="170.0" text="Get Started">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="My Data">
+                  <Button fx:id="dataButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="60.0" prefWidth="170.0" text="My Data">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Session Settings">
+                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="60.0" prefWidth="170.0" text="Session Settings">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
