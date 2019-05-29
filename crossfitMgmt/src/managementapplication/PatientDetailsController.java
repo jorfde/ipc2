@@ -3,18 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crossfitmgmt;
+package managementapplication;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author jorge
  */
-public class AddTemplateController implements Initializable {
+public class PatientDetailsController implements Initializable {
+
+
+
 
     /**
      * Initializes the controller class.
@@ -23,5 +32,8 @@ public class AddTemplateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+
+
     
 }
