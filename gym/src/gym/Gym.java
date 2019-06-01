@@ -20,10 +20,12 @@ public class Gym extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-        
+        MainController maincontroller = loader.<MainController>getController();
+        maincontroller.initStage(stage);
+        stage.setTitle("One stage, multiple scenes");
         stage.setScene(scene);
         stage.show();
     }
