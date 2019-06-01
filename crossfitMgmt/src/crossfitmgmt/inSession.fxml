@@ -26,7 +26,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Text>
-                  <ProgressBar prefWidth="200.0" progress="0.0" />
+                  <ProgressBar prefHeight="20.0" prefWidth="264.0" progress="0.0" />
                </children>
                <HBox.margin>
                   <Insets right="100.0" />
@@ -42,7 +42,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Text>
-                  <ProgressBar prefWidth="200.0" progress="0.0" />
+                  <ProgressBar prefHeight="20.0" prefWidth="260.0" progress="0.0" />
                </children>
                <HBox.margin>
                   <Insets right="50.0" />
