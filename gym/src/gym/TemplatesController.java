@@ -16,6 +16,7 @@ import static gym.MainController.TEMPLATE;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,6 +71,8 @@ public class TemplatesController implements Initializable {
         gym = AccesoBD.getInstance().getGym();
         templates = FXCollections.observableList( gym.getTiposSesion() );
         templateView.setItems(templates);
+        
+        detailsButton.disableProperty().bind(Bindings.equal(-1,templateView.getSelectionModel().selectedIndexProperty()));
     }    
 
     @FXML
