@@ -38,6 +38,10 @@ public class MainController implements Initializable {
     public static final int START = 0;
     public static final int TEMPLATE = 1;
     public static final int GROUP = 2;
+    public static final int MAIN = 3;
+    public static final int ADD = 0;
+    public static final int DETAILS = 1;
+    public static final int STATS = 2;
 
     /**
      * Initializes the controller class.
@@ -76,6 +80,7 @@ public class MainController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 root = (Parent) myLoader.load();
                 SettingsController settingsController = myLoader.<SettingsController>getController();
+                settingsController.initStage(primaryStage);
                 scene = new Scene(root);
                 aNewStage.setScene(scene);
                 aNewStage.initModality(Modality.APPLICATION_MODAL);

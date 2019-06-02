@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.AddTemplateController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,36 +21,42 @@
                <children>
                   <Label text="Warming Time: " />
                   <TextField fx:id="warmingField" />
+                  <Label fx:id="labelWarming" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Nº Exercises: " />
                   <TextField fx:id="numberEField" />
+                  <Label fx:id="labelNumberE" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Working Time:" />
                   <TextField fx:id="workingField" />
+                  <Label fx:id="labelWorking" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Rest Time (Exercises): " />
                   <TextField fx:id="restEField" />
+                  <Label fx:id="labelRestE" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Nº Circuit Repetitions: " />
                   <TextField fx:id="numberCField" />
+                  <Label fx:id="labelNumberC" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Rest Time (Circuit):" />
                   <TextField fx:id="restCField" />
+                  <Label fx:id="labelRestC" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
          </children>
