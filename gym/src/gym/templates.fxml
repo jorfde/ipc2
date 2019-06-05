@@ -34,4 +34,12 @@
          </children>
       </HBox>
    </top>
+   <bottom>
+      <HBox fx:id="selectBox" minHeight="0.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="okButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" text="OK" />
+            <Button fx:id="cancelButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" text="Cancel" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

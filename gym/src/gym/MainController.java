@@ -42,6 +42,8 @@ public class MainController implements Initializable {
     public static final int ADD = 0;
     public static final int DETAILS = 1;
     public static final int STATS = 2;
+    public static final int EDIT = 3;
+    public static final int DEFAULT = -1;
 
     /**
      * Initializes the controller class.
@@ -92,6 +94,7 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 TemplatesController templateController = myLoader.<TemplatesController>getController();
                 templateController.initStage(primaryStage);
+                templateController.initMode(DEFAULT, null);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;

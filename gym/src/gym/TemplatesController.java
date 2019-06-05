@@ -8,6 +8,7 @@ package gym;
 
 import accesoBD.AccesoBD;
 import static gym.MainController.ADD;
+import static gym.MainController.DEFAULT;
 import static gym.MainController.DETAILS;
 import static gym.MainController.GROUP;
 import static gym.MainController.MAIN;
@@ -33,6 +34,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Gym;
@@ -56,6 +58,12 @@ public class TemplatesController implements Initializable {
     private Button returnButton;
     @FXML
     private TextField filterField;
+    @FXML
+    private HBox selectBox;
+    @FXML
+    private Button okButton;
+    @FXML
+    private Button cancelButton;
     
     private Stage primaryStage;
     private Scene prevScene;
@@ -66,7 +74,12 @@ public class TemplatesController implements Initializable {
     private ObservableList<SesionTipo> templates = FXCollections.observableArrayList();   
     
     private SortedList<SesionTipo> sortedData;
-
+    
+    private int mode;
+    
+    private SesionTipo template = new SesionTipo();
+    
+    private AddGroupController agc;
     
     /**
      * Initializes the controller class.
@@ -105,6 +118,8 @@ public class TemplatesController implements Initializable {
         templateView.setItems(sortedData);
         
         detailsButton.disableProperty().bind(Bindings.equal(-1,templateView.getSelectionModel().selectedIndexProperty()));
+        
+        okButton.disableProperty().bind(Bindings.equal(-1,templateView.getSelectionModel().selectedIndexProperty()));
     }    
 
     @FXML
@@ -118,6 +133,11 @@ public class TemplatesController implements Initializable {
             case "addButton": createWindow(index, ADD);break;
             case "detailsButton": createWindow(index, DETAILS);break;
             case "returnButton": createScene(MAIN);break;
+            case "okButton": 
+                agc.selected(index);
+                exit();
+                break;
+            case "cancelButton": exit();break;
         }
     }
 
@@ -126,6 +146,17 @@ public class TemplatesController implements Initializable {
         prevScene = stage.getScene();
         prevTitle = stage.getTitle();
         primaryStage.setTitle("Window 1");
+    }
+    
+    public void initMode(int mode, AddGroupController agc){
+        this.mode = mode;
+        this.agc = agc;
+        
+        if(mode == DEFAULT){
+            invisibleBox();
+        } else {
+            returnButton.setVisible(false);
+        }
     }
     
     private void createScene(int mode) throws IOException{
@@ -185,5 +216,16 @@ public class TemplatesController implements Initializable {
         aNewStage.setScene(scene);
         aNewStage.initModality(Modality.APPLICATION_MODAL);
         aNewStage.show();
+    }
+    
+    private void invisibleBox(){
+        selectBox.setVisible(false);
+        okButton.setPrefHeight(0);
+        cancelButton.setPrefHeight(0);
+        selectBox.setPrefHeight(0);
+    }
+    
+    private void exit(){
+        cancelButton.getScene().getWindow().hide();
     }
 }
