@@ -111,7 +111,7 @@ public class GroupsController implements Initializable {
                     return true; // Filter matches first name.
                 } else if (group.getDescripcion().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
-                } else if (group.getDefaultTipoSesion().getCodigo().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (group.getDefaultTipoSesion() != null && group.getDefaultTipoSesion().getCodigo().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false; // Does not match.
