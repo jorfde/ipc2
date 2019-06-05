@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import modelo.Grupo;
 
 /**
  * FXML Controller class
@@ -24,13 +25,13 @@ import javafx.stage.Stage;
  */
 public class GroupsController implements Initializable {
     @FXML
-    private TableView<?> groupView;
+    private TableView<Grupo> groupView;
     @FXML
-    private TableColumn<?, ?> codeColumn;
+    private TableColumn<Grupo, String> codeColumn;
     @FXML
-    private TableColumn<?, ?> descriptionColumn;
+    private TableColumn<Grupo, String> descriptionColumn;
     @FXML
-    private TableColumn<?, ?> templateColumn;
+    private TableColumn<Grupo, String> templateColumn;
     @FXML
     private Button addButton;
     @FXML

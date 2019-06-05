@@ -20,6 +20,8 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,10 +32,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.SesionTipo;
 import modelo.Gym;
+import modelo.SesionTipo;
 
 /**
  * FXML Controller class
@@ -51,6 +54,8 @@ public class TemplatesController implements Initializable {
     private Button detailsButton;
     @FXML
     private Button returnButton;
+    @FXML
+    private TextField filterField;
     
     private Stage primaryStage;
     private Scene prevScene;
@@ -58,7 +63,10 @@ public class TemplatesController implements Initializable {
     
     private Gym gym;
     
-    private ObservableList<SesionTipo> templates = FXCollections.observableArrayList();
+    private ObservableList<SesionTipo> templates = FXCollections.observableArrayList();   
+    
+    private SortedList<SesionTipo> sortedData;
+
     
     /**
      * Initializes the controller class.
@@ -70,7 +78,31 @@ public class TemplatesController implements Initializable {
         
         gym = AccesoBD.getInstance().getGym();
         templates = FXCollections.observableList( gym.getTiposSesion() );
-        templateView.setItems(templates);
+        
+        FilteredList<SesionTipo> filteredData = new FilteredList<>(templates, p -> true);
+        
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(template -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (template.getCodigo().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } 
+                return false; // Does not match.
+            });
+        });
+        
+        sortedData = new SortedList<>(filteredData);
+        
+        sortedData.comparatorProperty().bind(templateView.comparatorProperty());
+        
+        templateView.setItems(sortedData);
         
         detailsButton.disableProperty().bind(Bindings.equal(-1,templateView.getSelectionModel().selectedIndexProperty()));
     }    
@@ -78,6 +110,9 @@ public class TemplatesController implements Initializable {
     @FXML
     private void buttonHandler(ActionEvent event) throws IOException {
         int index = templateView.getSelectionModel().selectedIndexProperty().getValue();
+        
+        if(index !=-1)
+            index = sortedData.getSourceIndexFor(templates, index);
         
         switch(((Node)event.getSource()).getId()){
             case "addButton": createWindow(index, ADD);break;
