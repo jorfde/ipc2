@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -11,10 +12,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="599.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
    <center>
-      <LineChart fx:id="lineChart" BorderPane.alignment="CENTER">
+      <LineChart fx:id="lineChart" prefHeight="217.0" prefWidth="481.0" BorderPane.alignment="CENTER">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -24,34 +26,61 @@
       </LineChart>
    </center>
    <bottom>
-      <HBox fx:id="windowBox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="windowBox" prefHeight="63.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" text="OK" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" text="Cancel" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="75.0" text="OK">
+               <HBox.margin>
+                  <Insets left="420.0" />
+               </HBox.margin></Button>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="75.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="237.0" prefWidth="118.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Working Time" />
+            <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Work Time" />
             <CheckBox fx:id="restTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Rest Time" />
             <CheckBox fx:id="realTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Real Time" />
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" text="Return" />
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="99.0" text="Return" />
          </children>
       </VBox>
    </right>
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="155.0" prefWidth="599.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Group: ">
-               <font>
-                  <Font name="Roboto" size="14.0" />
-               </font></Label>
-            <TextField fx:id="groupField" styleClass="TextForm" />
-            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search Group" />
-            <Label minWidth="96.0" textFill="#f41717" />
+            <HBox prefHeight="173.0" prefWidth="599.0" styleClass="title">
+               <children>
+                  <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics">
+                     <font>
+                        <Font name="Roboto" size="64.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="109.0" prefWidth="574.0">
+               <children>
+                  <Label text="Group: ">
+                     <font>
+                        <Font name="Roboto" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="groupField" styleClass="TextForm" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" styleClass="saveButton" text="Search Group">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label minWidth="96.0" textFill="#f41717" />
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </top>
 </BorderPane>

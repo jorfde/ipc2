@@ -8,33 +8,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.SettingsController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="233.0" prefWidth="600.0">
+            <HBox prefHeight="100.0" prefWidth="575.0">
                <children>
-                  <Label text="Group code: ">
+                  <Label prefHeight="18.0" prefWidth="100.0" text="Group code: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
                   <TextField fx:id="groupField" styleClass="TextForm" />
-                  <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search group" />
+                  <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="125.0" styleClass="saveButton" text="Search group">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin></Button>
                   <Label fx:id="labelGroup" minWidth="96.0" textFill="#f41717" />
                </children>
                <VBox.margin>
                   <Insets left="25.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="249.0" prefWidth="600.0">
+            <HBox prefHeight="249.0" prefWidth="575.0">
                <children>
-                  <Label text="Template code: ">
+                  <Label prefHeight="18.0" prefWidth="100.0" text="Template code: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
                   <TextField fx:id="templateField" styleClass="TextForm" />
-                  <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search template" />
+                  <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="125.0" styleClass="saveButton" text="Search template">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin></Button>
                   <Label fx:id="labelTemplate" minWidth="96.0" textFill="#f41717" />
                </children>
                <VBox.margin>
@@ -57,6 +64,23 @@
                </VBox.margin>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets top="40.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="title" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+               <font>
+                  <Font name="Roboto" size="64.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="25.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
