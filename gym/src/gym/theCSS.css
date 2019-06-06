@@ -74,6 +74,11 @@
    -fx-background-color: #4CAF50;
 }
 
+.title2{
+    -fx-font-family: Roboto;
+    -fx-font-color: #757575;
+    
+}
 /*
 .textFormInput{
  -fx-font-family: Arial;

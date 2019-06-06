@@ -10,17 +10,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.TemplatesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.TemplatesController">
    <center>
-      <TableView fx:id="templateView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="templateView" prefHeight="340.0" prefWidth="480.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="codeColumn" prefWidth="75.0" text="Code" />
         </columns>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="70.0" text="Add" />
             <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#buttonHandler" text="Details" />
@@ -28,17 +32,6 @@
          </children>
       </VBox>
    </right>
-   <top>
-      <HBox prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Filter: ">
-               <font>
-                  <Font name="Roboto" size="14.0" />
-               </font></Label>
-            <TextField fx:id="filterField" styleClass="TextForm" />
-         </children>
-      </HBox>
-   </top>
    <bottom>
       <HBox fx:id="selectBox" minHeight="0.0" prefHeight="58.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
@@ -50,4 +43,35 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <VBox prefHeight="146.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="title">
+               <children>
+                  <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title2" text="Templates">
+                     <font>
+                        <Font name="Roboto" size="64.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="600.0">
+               <children>
+                  <Label text="Filter: ">
+                     <font>
+                        <Font name="Roboto" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filterField" styleClass="TextForm" />
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" top="25.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
 </BorderPane>
