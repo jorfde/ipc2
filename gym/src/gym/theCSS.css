@@ -62,10 +62,18 @@
 .title{
   -fx-background-color: #373737;
 }
+.weights{
+  -fx-background-color: #8e8e8e;
+}
 
 .TextForm{
 -fx-background-color: #757575;
 }
+
+.saveButton{
+   -fx-background-color: #4CAF50;
+}
+
 /*
 .textFormInput{
  -fx-font-family: Arial;

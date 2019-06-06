@@ -22,7 +22,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="codeField" styleClass="textForm" stylesheets="@theCSS.css" />
+                  <TextField fx:id="codeField" styleClass="TextForm" stylesheets="@theCSS.css" />
                   <Label fx:id="labelCode" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -32,7 +32,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="warmingField" styleClass="textForm" />
+                  <TextField fx:id="warmingField" styleClass="TextForm" />
                   <Label fx:id="labelWarming" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -42,7 +42,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberEField" styleClass="textForm" />
+                  <TextField fx:id="numberEField" styleClass="TextForm" />
                   <Label fx:id="labelNumberE" minWidth="210.0" prefHeight="25.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -52,7 +52,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="workingField" styleClass="textForm" />
+                  <TextField fx:id="workingField" styleClass="TextForm" />
                   <Label fx:id="labelWorking" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -62,7 +62,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="restEField" styleClass="textForm" />
+                  <TextField fx:id="restEField" styleClass="TextForm" />
                   <Label fx:id="labelRestE" minWidth="210.0" prefHeight="25.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -72,7 +72,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberCField" styleClass="textForm" />
+                  <TextField fx:id="numberCField" styleClass="TextForm" />
                   <Label fx:id="labelNumberC" minWidth="210.0" prefHeight="26.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
@@ -82,7 +82,7 @@
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="restCField" styleClass="textForm" />
+                  <TextField fx:id="restCField" styleClass="TextForm" />
                   <Label fx:id="labelRestC" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>

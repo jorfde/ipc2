@@ -13,7 +13,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="184.0" prefWidth="600.0">
+            <HBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="600.0" styleClass="weights">
                <children>
                   <Line endX="-90.0" endY="180.0" layoutX="627.0" layoutY="-115.0" startX="-90.0" startY="226.0" stroke="#494949" strokeWidth="10.0">
                      <HBox.margin>
@@ -61,7 +61,7 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="20.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="600.0">
