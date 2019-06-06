@@ -58,15 +58,15 @@
    -fx-highlight-text-fill: red !important;
 }
 
-
-.Title{
+*/
+.title{
   -fx-background-color: #373737;
 }
 
-.textForm{
+.TextForm{
 -fx-background-color: #757575;
 }
-
+/*
 .textFormInput{
  -fx-font-family: Arial;
 }

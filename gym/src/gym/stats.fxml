@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
    <center>
       <LineChart fx:id="lineChart" BorderPane.alignment="CENTER">
         <xAxis>
@@ -43,8 +44,11 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Group: " />
-            <TextField fx:id="groupField" />
+            <Label text="Group: ">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></Label>
+            <TextField fx:id="groupField" styleClass="TextForm" />
             <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search Group" />
             <Label minWidth="96.0" textFill="#f41717" />
          </children>

@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
    <center>
       <TableView fx:id="groupView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
@@ -20,20 +21,23 @@
       </TableView>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" text="Add" />
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#buttonHandler" text="Edit" />
-            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" text="Stats" />
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" text="Return" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Add" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Edit" />
+            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Stats" />
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Return" />
          </children>
       </VBox>
    </right>
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Filter: " />
-            <TextField fx:id="filterField" />
+            <Label text="Filter: ">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></Label>
+            <TextField fx:id="filterField" styleClass="textForm" />
          </children>
       </HBox>
    </top>
