@@ -1,18 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonHandler" text="Start" />
-            <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Template" />
-            <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" text="Group" />
-            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" text="Stats" />
+            <HBox alignment="TOP_CENTER" prefHeight="184.0" prefWidth="600.0">
+               <children>
+                  <Line endX="-90.0" endY="180.0" layoutX="627.0" layoutY="-115.0" startX="-90.0" startY="226.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets right="5.0" top="50.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="-90.0" endY="180.0" layoutX="612.0" layoutY="-125.0" startX="-90.0" startY="249.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets right="5.0" top="40.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="-90.0" endY="180.0" layoutX="210.0" layoutY="11.0" startX="-90.0" startY="275.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="289.0" startX="-100.0" stroke="#494949" strokeWidth="10.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="75.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="-90.0" endY="180.0" layoutX="210.0" layoutY="11.0" startX="-90.0" startY="275.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="-90.0" endY="180.0" layoutX="196.0" layoutY="-135.0" startX="-90.0" startY="249.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets left="5.0" top="40.0" />
+                     </HBox.margin>
+                  </Line>
+                  <Line endX="-90.0" endY="180.0" layoutX="181.0" layoutY="-125.0" startX="-90.0" startY="226.0" stroke="#494949" strokeWidth="10.0">
+                     <HBox.margin>
+                        <Insets left="5.0" top="50.0" />
+                     </HBox.margin>
+                  </Line>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="600.0">
+               <children>
+                  <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="myTrainingPal" wrappingWidth="465.0068359375">
+                     <font>
+                        <Font name="Roboto" size="72.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="600.0">
+               <children>
+                  <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval Timer">
+                     <font>
+                        <Font name="Roboto" size="38.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="84.0" text="Start">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Template">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="85.0" stylesheets="@theCSS.css" text="Group">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="85.0" stylesheets="@theCSS.css" text="Stats">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </center>
 </BorderPane>
