@@ -81,6 +81,8 @@ public class TemplatesController implements Initializable {
     
     private AddGroupController agc;
     
+    private SettingsController sg;
+    
     /**
      * Initializes the controller class.
      */
@@ -134,7 +136,10 @@ public class TemplatesController implements Initializable {
             case "detailsButton": createWindow(index, DETAILS);break;
             case "returnButton": createScene(MAIN);break;
             case "okButton": 
-                agc.selected(index);
+                if(agc != null)
+                    agc.selected(index);
+                if(sg != null)
+                    sg.selected(index);
                 exit();
                 break;
             case "cancelButton": exit();break;
@@ -148,9 +153,10 @@ public class TemplatesController implements Initializable {
         primaryStage.setTitle("Window 1");
     }
     
-    public void initMode(int mode, AddGroupController agc){
+    public void initMode(int mode, AddGroupController agc, SettingsController sg){
         this.mode = mode;
         this.agc = agc;
+        this.sg = sg;
         
         if(mode == DEFAULT){
             invisibleBox();
@@ -170,7 +176,6 @@ public class TemplatesController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 root = (Parent) myLoader.load();
                 SettingsController settingsController = myLoader.<SettingsController>getController();
-                settingsController.initStage(primaryStage);
                 scene = new Scene(root);
                 aNewStage.setScene(scene);
                 aNewStage.initModality(Modality.APPLICATION_MODAL);

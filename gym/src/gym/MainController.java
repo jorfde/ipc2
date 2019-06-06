@@ -32,6 +32,8 @@ public class MainController implements Initializable {
     private Button templateButton;
     @FXML
     private Button groupButton;
+    @FXML
+    private Button statsButton;
     
     private Stage primaryStage;
     
@@ -39,11 +41,12 @@ public class MainController implements Initializable {
     public static final int TEMPLATE = 1;
     public static final int GROUP = 2;
     public static final int MAIN = 3;
+    public static final int STATS = 4;
     public static final int ADD = 0;
     public static final int DETAILS = 1;
-    public static final int STATS = 2;
     public static final int EDIT = 3;
     public static final int DEFAULT = -1;
+    
 
     /**
      * Initializes the controller class.
@@ -59,6 +62,7 @@ public class MainController implements Initializable {
             case "startButton": createScene(START);break;
             case "templateButton": createScene(TEMPLATE);break;
             case "groupButton": createScene(GROUP);break;
+            case "statsButton": createScene(STATS);break;
         }
     }
     
@@ -82,7 +86,6 @@ public class MainController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 root = (Parent) myLoader.load();
                 SettingsController settingsController = myLoader.<SettingsController>getController();
-                settingsController.initStage(primaryStage);
                 scene = new Scene(root);
                 aNewStage.setScene(scene);
                 aNewStage.initModality(Modality.APPLICATION_MODAL);
@@ -94,7 +97,7 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 TemplatesController templateController = myLoader.<TemplatesController>getController();
                 templateController.initStage(primaryStage);
-                templateController.initMode(DEFAULT, null);
+                templateController.initMode(DEFAULT, null, null);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;
@@ -104,6 +107,15 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 GroupsController groupController = myLoader.<GroupsController>getController();
                 groupController.initStage(primaryStage);
+                scene = new Scene(root);
+                primaryStage.setScene(scene);
+                break;
+                
+            case STATS:
+                myLoader = new FXMLLoader(getClass().getResource("stats.fxml"));
+                root = (Parent) myLoader.load();
+                StatsController statsController = myLoader.<StatsController>getController();
+                statsController.initStage(primaryStage);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;

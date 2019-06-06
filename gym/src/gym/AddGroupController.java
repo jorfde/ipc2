@@ -216,7 +216,7 @@ public class AddGroupController implements Initializable {
         FXMLLoader myLoader = new FXMLLoader(getClass().getResource("templates.fxml"));
         Parent root = (Parent) myLoader.load();
         TemplatesController templatesController = myLoader.<TemplatesController>getController();   
-        templatesController.initMode(mode, this);
+        templatesController.initMode(mode, this, null);
         Scene scene = new Scene(root);
         Stage aNewStage = new Stage();
         aNewStage.setScene(scene);

@@ -7,28 +7,29 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.SettingsController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Template code: " />
-                  <TextField fx:id="templateField" />
-                  <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search template" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
                   <Label text="Group code: " />
                   <TextField fx:id="groupField" />
                   <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search group" />
+                  <Label fx:id="labelGroup" minWidth="96.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonHandler" text="Start" />
+                  <Label text="Template code: " />
+                  <TextField fx:id="templateField" />
+                  <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search template" />
+                  <Label fx:id="labelTemplate" minWidth="96.0" textFill="#f41717" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" text="OK" />
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" text="Cancel" />
                </children>
             </HBox>

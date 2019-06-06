@@ -8,7 +8,6 @@ package gym;
 
 import accesoBD.AccesoBD;
 import static gym.MainController.ADD;
-import static gym.MainController.DETAILS;
 import static gym.MainController.EDIT;
 import static gym.MainController.GROUP;
 import static gym.MainController.MAIN;
@@ -30,8 +29,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,7 +36,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Grupo;
-import modelo.SesionTipo;
 
 /**
  * FXML Controller class
@@ -148,7 +144,7 @@ public class GroupsController implements Initializable {
         primaryStage = stage;
         prevScene = stage.getScene();
         prevTitle = stage.getTitle();
-        primaryStage.setTitle("Window 1");
+        primaryStage.setTitle("");
     }
     
     private void createScene(int mode) throws IOException{
@@ -162,7 +158,6 @@ public class GroupsController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 root = (Parent) myLoader.load();
                 SettingsController settingsController = myLoader.<SettingsController>getController();
-                settingsController.initStage(primaryStage);
                 scene = new Scene(root);
                 aNewStage.setScene(scene);
                 aNewStage.initModality(Modality.APPLICATION_MODAL);

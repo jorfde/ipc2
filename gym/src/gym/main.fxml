@@ -11,6 +11,7 @@
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonHandler" text="Start" />
             <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Template" />
             <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" text="Group" />
+            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" text="Stats" />
          </children>
       </HBox>
    </center>
