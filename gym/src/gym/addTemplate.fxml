@@ -15,6 +15,7 @@
                <children>
                   <Label text="Code: " />
                   <TextField fx:id="codeField" />
+                  <Label fx:id="labelCode" minWidth="210.0" textFill="#f41717" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">

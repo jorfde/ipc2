@@ -5,10 +5,11 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -22,10 +23,10 @@
       </LineChart>
    </center>
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="windowBox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" text="OK" />
-            <Button mnemonicParsing="false" text="Change Group" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" text="Cancel" />
          </children>
       </HBox>
    </bottom>
@@ -35,7 +36,18 @@
             <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Working Time" />
             <CheckBox fx:id="restTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Rest Time" />
             <CheckBox fx:id="realTime" mnemonicParsing="false" onAction="#checkBoxHandler" text="Real Time" />
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" text="Return" />
          </children>
       </VBox>
    </right>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Group: " />
+            <TextField fx:id="groupField" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" text="Search Group" />
+            <Label minWidth="96.0" textFill="#f41717" />
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

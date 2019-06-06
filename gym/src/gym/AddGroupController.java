@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -55,12 +56,15 @@ public class AddGroupController implements Initializable {
     private Button searchButton;
     @FXML
     private Label templateLabel;
+    @FXML
+    private Label codeLabel;
     
     private boolean error = true;
     
     private BooleanProperty aux = new SimpleBooleanProperty(true);
     
     private boolean eTemplate = true;
+    private boolean eCode = true;
     
     private int index;
     private int mode;
@@ -73,6 +77,8 @@ public class AddGroupController implements Initializable {
     
     private int sel;
     
+    private Alert alert;
+    
     
     /**
      * Initializes the controller class.
@@ -82,9 +88,25 @@ public class AddGroupController implements Initializable {
         Gym gym = AccesoBD.getInstance().getGym();
         templates = gym.getTiposSesion();
         
+        codeField.textProperty().addListener((observable, oldVal, newVal) -> { 
+            eCode = checkCode(newVal);
+            updateError();
+        });
+        codeField.focusedProperty().addListener((observable, oldVal, newVal) -> { 
+            if(!newVal){
+                eCode = checkCode(codeField.getText());
+                updateError();
+            }
+        });
         templateField.textProperty().addListener((observable, oldVal, newVal) -> { 
             checkTemplate(newVal);
         });
+        
+        alert= new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText("Done");
+        
+        okButton.disableProperty().bind(aux);
     }    
 
     @FXML
@@ -100,6 +122,7 @@ public class AddGroupController implements Initializable {
                         s.setDefaultTipoSesion(template);
 
                     groups.add(s);
+                    alert.setContentText("You successfully added a GROUP.");
                 } else if(mode == EDIT){
                     Grupo s = new Grupo();
                     s.setCodigo(codeField.getText());
@@ -109,7 +132,10 @@ public class AddGroupController implements Initializable {
                         s.setDefaultTipoSesion(template);
                     
                     groups.set(index, s);
+                    alert.setContentText("You successfully modified a GROUP.");
                 }
+                
+                alert.showAndWait();
                 exit();
                 break;
                 
@@ -182,7 +208,7 @@ public class AddGroupController implements Initializable {
     
     private void updateError(){
         error = false;
-        error = eTemplate;
+        error = eCode;
         aux.setValue(error);
     }
     
@@ -200,5 +226,28 @@ public class AddGroupController implements Initializable {
     
     public void selected(int sel){
         this.sel = sel;
+    }
+    
+    private boolean checkCode(String data){
+        boolean res = false;
+        
+        if(data.equals("")){
+            res = true;
+            codeLabel.setText("You can't leave the field in blank");
+        }
+        for(int i = 0;i < groups.size() && !res;i++){
+            Grupo s = groups.get(i);
+            String code = s.getCodigo();
+            if(code.equals(data)){
+                res = true;
+                codeLabel.setText("This code is already in use");
+            }
+        }
+        
+        if(!res){
+            codeLabel.setText("");
+        }
+        
+        return res;
     }
 }

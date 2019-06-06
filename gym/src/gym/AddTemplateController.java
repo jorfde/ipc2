@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -68,6 +69,7 @@ public class AddTemplateController implements Initializable {
     
     private BooleanProperty aux = new SimpleBooleanProperty(true);
     
+    private boolean eCode = true;
     private boolean eWarming = true;
     private boolean eNumberE = true;
     private boolean eWorking = true;
@@ -79,12 +81,26 @@ public class AddTemplateController implements Initializable {
     
     public static final String errorMessage = "Only numbers without decimals";
     
+    private Alert alert;
+    @FXML
+    private Label labelCode;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        codeField.textProperty().addListener((observable, oldVal, newVal) -> { 
+            eCode = checkCode(newVal);
+            updateError();
+        });
+        codeField.focusedProperty().addListener((observable, oldVal, newVal) -> { 
+            if(!newVal){
+                eCode = checkCode(codeField.getText());
+                updateError();
+            }
+        });
         warmingField.textProperty().addListener((observable, oldVal, newVal) -> { 
             eWarming = checkNum(newVal);
             if(eWarming) labelWarming.setText(errorMessage);
@@ -123,6 +139,11 @@ public class AddTemplateController implements Initializable {
         });
         
         okButton.disableProperty().bind(aux);
+        
+        alert= new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText("Done");
+        alert.setContentText("You successfully added a TEMPLATE.");
     }    
 
     @FXML
@@ -139,7 +160,9 @@ public class AddTemplateController implements Initializable {
                     s.setNum_circuitos(Integer.parseInt(numberCField.getText()));
                     s.setD_circuito(Integer.parseInt(restCField.getText()));
                     templates.add(s);
+                    alert.showAndWait();
                 } 
+                
                 exit();
                 break;
                 
@@ -202,7 +225,30 @@ public class AddTemplateController implements Initializable {
     
     private void updateError(){
         error = false;
-        error = eWarming || eNumberE || eWorking || eRestE || eNumberC || eRestC;
+        error = eWarming || eNumberE || eWorking || eRestE || eNumberC || eRestC || eCode;
         aux.setValue(error);
+    }
+    
+    private boolean checkCode(String data){
+        boolean res = false;
+        
+        if(data.equals("")){
+            res = true;
+            labelCode.setText("You can't leave the field in blank");
+        }
+        for(int i = 0;i < templates.size() && !res;i++){
+            SesionTipo s = templates.get(i);
+            String code = s.getCodigo();
+            if(code.equals(data)){
+                res = true;
+                labelCode.setText("This code is already in use");
+            }
+        }
+        
+        if(!res){
+            labelCode.setText("");
+        }
+        
+        return res;
     }
 }
