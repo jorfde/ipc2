@@ -204,6 +204,9 @@ public class AddTemplateController implements Initializable {
                 numberCField.setEditable(false);
                 restCField.setEditable(false);
             }
+            if(mode == ADD){
+                codeField.setText(codeField.getText()+"2");
+            }
         } else {
             //title.setText("New Template");
         }
