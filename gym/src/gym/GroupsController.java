@@ -8,6 +8,7 @@ package gym;
 
 import accesoBD.AccesoBD;
 import static gym.MainController.ADD;
+import static gym.MainController.DEFAULT;
 import static gym.MainController.EDIT;
 import static gym.MainController.GROUP;
 import static gym.MainController.MAIN;
@@ -33,6 +34,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Grupo;
@@ -61,6 +63,12 @@ public class GroupsController implements Initializable {
     private TextField filterField;
     @FXML
     private Button statsButton;
+    @FXML
+    private HBox selectBox;
+    @FXML
+    private Button okButton;
+    @FXML
+    private Button cancelButton;
     
     private Stage primaryStage;
     private Scene prevScene;
@@ -71,6 +79,11 @@ public class GroupsController implements Initializable {
     private ObservableList<Grupo> groups = FXCollections.observableArrayList();   
     
     private SortedList<Grupo> sortedData;
+    
+    private int mode;
+    
+    private SettingsController sg;
+    
     
 
     /**
@@ -137,6 +150,12 @@ public class GroupsController implements Initializable {
             case "addButton": createWindow(-1, ADD);break;
             case "editButton": createWindow(index, EDIT);break;
             case "returnButton": createScene(MAIN);break;
+            case "okButton": 
+                if(sg != null)
+                    sg.selected2(index);
+                exit();
+                break;
+            case "cancelButton": exit();break;
         }
     }
 
@@ -145,6 +164,17 @@ public class GroupsController implements Initializable {
         prevScene = stage.getScene();
         prevTitle = stage.getTitle();
         primaryStage.setTitle("");
+    }
+    
+    public void initMode(int mode, SettingsController sg){
+        this.mode = mode;
+        this.sg = sg;
+        
+        if(mode == DEFAULT){
+            invisibleBox();
+        } else {
+            returnButton.setVisible(false);
+        }
     }
     
     private void createScene(int mode) throws IOException{
@@ -203,5 +233,16 @@ public class GroupsController implements Initializable {
         aNewStage.setScene(scene);
         aNewStage.initModality(Modality.APPLICATION_MODAL);
         aNewStage.show();
+    }
+    
+    private void invisibleBox(){
+        selectBox.setVisible(false);
+        okButton.setPrefHeight(0);
+        cancelButton.setPrefHeight(0);
+        selectBox.setPrefHeight(0);
+    }
+    
+    private void exit(){
+        cancelButton.getScene().getWindow().hide();
     }
 }

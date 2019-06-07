@@ -107,6 +107,7 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 GroupsController groupController = myLoader.<GroupsController>getController();
                 groupController.initStage(primaryStage);
+                groupController.initMode(DEFAULT, null);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;

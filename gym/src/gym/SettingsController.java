@@ -56,16 +56,20 @@ public class SettingsController implements Initializable {
     @FXML
     private Button okButton;
     
-    private int sel;
-    private int sel2;
+    private int sel = -1;
+    private int sel2 = -1;
     
     private SesionTipo template = new SesionTipo();
+    
+    private Grupo group = new Grupo();
     
     private ArrayList<SesionTipo> templates;
     
     private ArrayList<Grupo> groups;
     
     private boolean eTemplate = true;
+    
+    private boolean eGroup = true;
     
     private BooleanProperty aux = new SimpleBooleanProperty(true);
     
@@ -84,6 +88,15 @@ public class SettingsController implements Initializable {
             checkTemplate(newVal);
             updateError();
         });
+        groupField.textProperty().addListener((observable, oldVal, newVal) -> { 
+            checkGroup(newVal);
+            updateError();
+            if(!eGroup && eTemplate && group.getDefaultTipoSesion() != null){
+                template = group.getDefaultTipoSesion();
+                templateField.setText(group.getDefaultTipoSesion().getCodigo());
+                eTemplate = false;
+            }
+        });
         
         okButton.disableProperty().bind(aux);
     }    
@@ -94,10 +107,10 @@ public class SettingsController implements Initializable {
             case "groupButton": 
                 createWindow(1, GROUP);
                 if(sel2 != -1){
-                    template = templates.get(sel);
-                    eTemplate = false;
-                    labelTemplate.setText("");
-                    templateField.setText(template.getCodigo());
+                    group = groups.get(sel2);
+                    eGroup = false;
+                    labelGroup.setText("");
+                    groupField.setText(group.getCodigo());
                 }
                 break;
                 
@@ -133,10 +146,15 @@ public class SettingsController implements Initializable {
                 TemplatesController templatesController = myLoader.<TemplatesController>getController();   
                 templatesController.initMode(mode, null, this);
                 scene = new Scene(root);
+                break;
                 
             case GROUP:
                 myLoader = new FXMLLoader(getClass().getResource("groups.fxml"));
                 root = (Parent) myLoader.load();
+                GroupsController groupController = myLoader.<GroupsController>getController();   
+                groupController.initMode(mode, this);
+                scene = new Scene(root);
+                break;
         }
         Stage aNewStage = new Stage();
         aNewStage.setScene(scene);
@@ -171,9 +189,28 @@ public class SettingsController implements Initializable {
         }
     }
     
+    private void checkGroup(String newVal){
+        boolean fin = false;
+        eGroup = true;
+        for(int i = 0;i < groups.size() && !fin;i++){
+            Grupo s = groups.get(i);
+            String code = s.getCodigo();
+            if(code.equals(newVal)){
+                eGroup = false;
+                group = s;
+                fin = true;
+            }
+        }
+        if (eGroup){
+            labelGroup.setText("It doesn't exist");
+        } else {
+            labelGroup.setText("");
+        }
+    }
+    
     private void updateError(){
         error = false;
-        error = eTemplate;
+        error = eTemplate || eGroup;
         aux.setValue(error);
     }
     
