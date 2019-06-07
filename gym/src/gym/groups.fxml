@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
    <center>
       <TableView fx:id="groupView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
@@ -72,4 +72,16 @@
          </children>
       </VBox>
    </top>
+   <bottom>
+      <HBox fx:id="selectBox" minHeight="0.0" prefHeight="58.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="okButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="70.0" text="OK">
+               <HBox.margin>
+                  <Insets left="425.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="cancelButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="74.0" text="Cancel" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
