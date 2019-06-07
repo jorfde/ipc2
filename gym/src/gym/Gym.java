@@ -25,7 +25,7 @@ public class Gym extends Application {
         Scene scene = new Scene(root);
         MainController maincontroller = loader.<MainController>getController();
         maincontroller.initStage(stage);
-        stage.setTitle("One stage, multiple scenes");
+        stage.setTitle("");
         stage.setScene(scene);
         stage.show();
     }

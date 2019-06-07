@@ -7,10 +7,8 @@
 package gym;
 
 import accesoBD.AccesoBD;
-import static gym.MainController.ADD;
-import static gym.MainController.EDIT;
+import static gym.MainController.DEFAULT;
 import static gym.MainController.GROUP;
-import static gym.MainController.MAIN;
 import static gym.MainController.TEMPLATE;
 import java.io.IOException;
 import java.net.URL;
@@ -152,7 +150,7 @@ public class SettingsController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("groups.fxml"));
                 root = (Parent) myLoader.load();
                 GroupsController groupController = myLoader.<GroupsController>getController();   
-                groupController.initMode(mode, this);
+                groupController.initMode(mode, this, null);
                 scene = new Scene(root);
                 break;
         }

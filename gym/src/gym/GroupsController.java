@@ -13,6 +13,7 @@ import static gym.MainController.EDIT;
 import static gym.MainController.GROUP;
 import static gym.MainController.MAIN;
 import static gym.MainController.START;
+import static gym.MainController.STATS;
 import static gym.MainController.TEMPLATE;
 import java.io.IOException;
 import java.net.URL;
@@ -84,6 +85,8 @@ public class GroupsController implements Initializable {
     
     private SettingsController sg;
     
+    private StatsController sc;
+    
     
 
     /**
@@ -147,15 +150,18 @@ public class GroupsController implements Initializable {
             index = sortedData.getSourceIndexFor(groups, index);
         
         switch(((Node)event.getSource()).getId()){
-            case "addButton": createWindow(-1, ADD);break;
-            case "editButton": createWindow(index, EDIT);break;
+            case "addButton": createWindow(-1, ADD, GROUP);break;
+            case "editButton": createWindow(index, EDIT, GROUP);break;
             case "returnButton": createScene(MAIN);break;
             case "okButton": 
                 if(sg != null)
                     sg.selected2(index);
+                if(sc != null)
+                    sc.selected(index);
                 exit();
                 break;
             case "cancelButton": exit();break;
+            case "statsButton": createWindow(index, 1, STATS);break;
         }
     }
 
@@ -166,9 +172,10 @@ public class GroupsController implements Initializable {
         primaryStage.setTitle("");
     }
     
-    public void initMode(int mode, SettingsController sg){
+    public void initMode(int mode, SettingsController sg, StatsController sc){
         this.mode = mode;
         this.sg = sg;
+        this.sc = sc;
         
         if(mode == DEFAULT){
             invisibleBox();
@@ -223,18 +230,6 @@ public class GroupsController implements Initializable {
         }
     }
     
-    private void createWindow(int index, int mode) throws IOException{
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("addGroup.fxml"));
-        Parent root = (Parent) myLoader.load();
-        AddGroupController addGroupController = myLoader.<AddGroupController>getController();
-        addGroupController.initData(index, groups, mode);       
-        Scene scene = new Scene(root);
-        Stage aNewStage = new Stage();
-        aNewStage.setScene(scene);
-        aNewStage.initModality(Modality.APPLICATION_MODAL);
-        aNewStage.show();
-    }
-    
     private void invisibleBox(){
         selectBox.setVisible(false);
         okButton.setPrefHeight(0);
@@ -244,5 +239,34 @@ public class GroupsController implements Initializable {
     
     private void exit(){
         cancelButton.getScene().getWindow().hide();
+    }
+    
+    private void createWindow(int index, int mode, int t) throws IOException{
+        FXMLLoader myLoader;
+        Parent root;
+        Scene scene = null;
+        
+        switch(t){
+            case STATS:
+                myLoader = new FXMLLoader(getClass().getResource("stats.fxml"));
+                root = (Parent) myLoader.load();
+                StatsController statsController = myLoader.<StatsController>getController();
+                statsController.initData(index);
+                statsController.initMode(1, this);
+                scene = new Scene(root);
+                break;
+                
+            case GROUP:
+                myLoader = new FXMLLoader(getClass().getResource("addGroup.fxml"));
+                root = (Parent) myLoader.load();
+                AddGroupController addGroupController = myLoader.<AddGroupController>getController();
+                addGroupController.initData(index, groups, mode);   
+                scene = new Scene(root);
+                break;
+        }
+        Stage aNewStage = new Stage();
+        aNewStage.setScene(scene);
+        aNewStage.initModality(Modality.APPLICATION_MODAL);
+        aNewStage.showAndWait();
     }
 }

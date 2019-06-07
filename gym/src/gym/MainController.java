@@ -107,7 +107,7 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 GroupsController groupController = myLoader.<GroupsController>getController();
                 groupController.initStage(primaryStage);
-                groupController.initMode(DEFAULT, null);
+                groupController.initMode(DEFAULT, null, null);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;
@@ -117,6 +117,7 @@ public class MainController implements Initializable {
                 root = (Parent) myLoader.load();
                 StatsController statsController = myLoader.<StatsController>getController();
                 statsController.initStage(primaryStage);
+                statsController.initMode(DEFAULT, null);
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;
