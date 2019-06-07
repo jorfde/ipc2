@@ -134,7 +134,7 @@ public class GroupsController implements Initializable {
             index = sortedData.getSourceIndexFor(groups, index);
         
         switch(((Node)event.getSource()).getId()){
-            case "addButton": createWindow(index, ADD);break;
+            case "addButton": createWindow(-1, ADD);break;
             case "editButton": createWindow(index, EDIT);break;
             case "returnButton": createScene(MAIN);break;
         }

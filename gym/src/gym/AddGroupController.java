@@ -7,7 +7,6 @@
 package gym;
 
 import accesoBD.AccesoBD;
-import static gym.AddTemplateController.errorMessage;
 import static gym.MainController.ADD;
 import static gym.MainController.DETAILS;
 import static gym.MainController.EDIT;
@@ -89,11 +88,13 @@ public class AddGroupController implements Initializable {
         templates = gym.getTiposSesion();
         
         codeField.textProperty().addListener((observable, oldVal, newVal) -> { 
-            eCode = checkCode(newVal);
-            updateError();
+            if(mode != EDIT){
+                eCode = checkCode(newVal);
+                updateError();
+            }
         });
         codeField.focusedProperty().addListener((observable, oldVal, newVal) -> { 
-            if(!newVal){
+            if(mode != EDIT && !newVal){
                 eCode = checkCode(codeField.getText());
                 updateError();
             }
@@ -177,6 +178,7 @@ public class AddGroupController implements Initializable {
             }
             if(mode == EDIT){
                 codeField.setEditable(false);
+                eCode = false;
             }
         } else {
             //title.setText("New Template");

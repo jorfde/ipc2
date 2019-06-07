@@ -92,11 +92,13 @@ public class AddTemplateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         codeField.textProperty().addListener((observable, oldVal, newVal) -> { 
-            eCode = checkCode(newVal);
-            updateError();
+            if(mode != DETAILS){
+                eCode = checkCode(newVal);
+                updateError();
+            }
         });
         codeField.focusedProperty().addListener((observable, oldVal, newVal) -> { 
-            if(!newVal){
+            if(mode != DETAILS && !newVal){
                 eCode = checkCode(codeField.getText());
                 updateError();
             }
@@ -203,6 +205,7 @@ public class AddTemplateController implements Initializable {
                 restEField.setEditable(false);
                 numberCField.setEditable(false);
                 restCField.setEditable(false);
+                eCode = false;
             }
             if(mode == ADD){
                 codeField.setText(codeField.getText()+"2");

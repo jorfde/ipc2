@@ -9,7 +9,9 @@ package gym;
 import accesoBD.AccesoBD;
 import static gym.MainController.ADD;
 import static gym.MainController.EDIT;
+import static gym.MainController.GROUP;
 import static gym.MainController.MAIN;
+import static gym.MainController.TEMPLATE;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.Grupo;
 import modelo.SesionTipo;
 
 /**
@@ -54,10 +57,13 @@ public class SettingsController implements Initializable {
     private Button okButton;
     
     private int sel;
+    private int sel2;
     
     private SesionTipo template = new SesionTipo();
     
     private ArrayList<SesionTipo> templates;
+    
+    private ArrayList<Grupo> groups;
     
     private boolean eTemplate = true;
     
@@ -72,6 +78,7 @@ public class SettingsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         modelo.Gym gym = AccesoBD.getInstance().getGym();
         templates = gym.getTiposSesion();
+        groups = gym.getGrupos();
         
         templateField.textProperty().addListener((observable, oldVal, newVal) -> { 
             checkTemplate(newVal);
@@ -84,9 +91,18 @@ public class SettingsController implements Initializable {
     @FXML
     private void buttonHandler(ActionEvent event) throws IOException {
         switch(((Node)event.getSource()).getId()){
-            case "groupButton": break;
+            case "groupButton": 
+                createWindow(1, GROUP);
+                if(sel2 != -1){
+                    template = templates.get(sel);
+                    eTemplate = false;
+                    labelTemplate.setText("");
+                    templateField.setText(template.getCodigo());
+                }
+                break;
+                
             case "templateButton": 
-                createWindow(1);
+                createWindow(1, TEMPLATE);
                 if(sel != -1){
                     template = templates.get(sel);
                     eTemplate = false;
@@ -105,12 +121,23 @@ public class SettingsController implements Initializable {
         }
     }
     
-    private void createWindow(int mode) throws IOException{
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("templates.fxml"));
-        Parent root = (Parent) myLoader.load();
-        TemplatesController templatesController = myLoader.<TemplatesController>getController();   
-        templatesController.initMode(mode, null, this);
-        Scene scene = new Scene(root);
+    private void createWindow(int mode, int t) throws IOException{
+        FXMLLoader myLoader;
+        Parent root;
+        Scene scene = null;
+        
+        switch(t){
+            case TEMPLATE:
+                myLoader = new FXMLLoader(getClass().getResource("templates.fxml"));
+                root = (Parent) myLoader.load();
+                TemplatesController templatesController = myLoader.<TemplatesController>getController();   
+                templatesController.initMode(mode, null, this);
+                scene = new Scene(root);
+                
+            case GROUP:
+                myLoader = new FXMLLoader(getClass().getResource("groups.fxml"));
+                root = (Parent) myLoader.load();
+        }
         Stage aNewStage = new Stage();
         aNewStage.setScene(scene);
         aNewStage.initModality(Modality.APPLICATION_MODAL);
@@ -119,6 +146,10 @@ public class SettingsController implements Initializable {
 
     void selected(int index) {
         this.sel = index;
+    }
+    
+    void selected2(int index) {
+        this.sel2 = index;
     }
     
     private void checkTemplate(String newVal){
