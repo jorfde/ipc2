@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="741.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
    <center>
       <LineChart fx:id="lineChart" prefHeight="217.0" prefWidth="481.0" BorderPane.alignment="CENTER">
         <xAxis>
@@ -28,18 +28,18 @@
       </LineChart>
    </center>
    <bottom>
-      <HBox fx:id="windowBox" prefHeight="63.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
+      <HBox fx:id="windowBox" prefHeight="63.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="OK">
+            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="OK">
                <HBox.margin>
                   <Insets left="550.0" />
                </HBox.margin></Button>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
+            <Button fx:id="cancelButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
    <right>
-      <VBox prefHeight="237.0" prefWidth="118.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="318.0" prefWidth="131.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Work Time">
                <font>
@@ -57,7 +57,7 @@
                <font>
                   <Font name="Roboto" size="14.0" />
                </font></Label>
-            <TextField fx:id="sessionsField" styleClass="TextForm" />
+            <TextField fx:id="sessionsField" promptText="Integer numbers" styleClass="TextForm" />
             <Label fx:id="labelSessions" minWidth="125.0" prefHeight="21.0" prefWidth="125.0" textFill="#f41717" />
             <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="139.0" text="Return">
                <VBox.margin>
@@ -93,15 +93,18 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="109.0" prefWidth="574.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="109.0" prefWidth="574.0">
                <children>
-                  <Label text="Group: ">
+                  <Label minWidth="46.0" text="Group: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="groupField" styleClass="TextForm" />
-                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="0.0" prefWidth="111.0" styleClass="saveButton" text="Search Group">
+                  <TextField fx:id="groupField" promptText="Write a group's code" styleClass="TextForm" />
+                  <Button fx:id="searchButton" minWidth="155.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="0.0" prefWidth="155.0" styleClass="saveButton" text="Search Group">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>

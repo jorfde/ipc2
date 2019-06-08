@@ -17,7 +17,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text fx:id="timeText" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="20:55" wrappingWidth="830.419921875">
+                  <Text fx:id="timeText" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="20:55" textAlignment="CENTER" wrappingWidth="830.419921875">
                      <font>
                         <Font size="300.0" />
                      </font>
@@ -69,7 +69,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="261.0" prefWidth="1920.0" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Text fx:id="exercises" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises progress">
                      <font>
@@ -82,7 +82,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Text fx:id="circuits" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Circuits progress">
                      <font>
@@ -101,7 +101,7 @@
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="partMode" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You're in warming mode" wrappingWidth="830.419921875">
+            <Text fx:id="partMode" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You're in warming mode" textAlignment="CENTER" wrappingWidth="830.419921875">
                <font>
                   <Font size="72.0" />
                </font>

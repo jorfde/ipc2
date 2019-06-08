@@ -77,7 +77,7 @@ public class StatsController implements Initializable {
     private Scene prevScene;
     private String prevTitle;
     
-    private boolean eGroup;
+    private boolean eGroup = true;
     
     private ArrayList<Grupo> groups;
     
@@ -126,25 +126,27 @@ public class StatsController implements Initializable {
         sessionsField.textProperty().addListener((observable, oldVal, newVal) -> { 
             eSession = checkNum(newVal);
             if(eSession) {
-                labelSessions.setText("Integer numbers only");
+                labelSessions.setText("Integer numbers");
             } else {
                 labelSessions.setText("");
-                int n = Integer.parseInt(sessionsField.getText());
-                n = (int) Math.min(n, sesions.size());
-                if(workingTime.isSelected()){
-                    deleteSeries(1);
-                    addSeries(1, n);
-                } 
+                if(!eGroup){
+                    int n = Integer.parseInt(sessionsField.getText());
+                    n = (int) Math.min(n, sesions.size());
+                    if(workingTime.isSelected()){
+                        deleteSeries(1);
+                        addSeries(1, n);
+                    } 
 
-                if(restTime.isSelected()){
-                    deleteSeries(2);
-                    addSeries(2, n);
+                    if(restTime.isSelected()){
+                        deleteSeries(2);
+                        addSeries(2, n);
+                    }
+
+                    if(realTime.isSelected()){
+                        deleteSeries(3);
+                        addSeries(3, n);
+                    } 
                 }
-                    
-                if(realTime.isSelected()){
-                    deleteSeries(3);
-                    addSeries(3, n);
-                } 
             }
         });
         

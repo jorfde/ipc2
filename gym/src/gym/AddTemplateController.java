@@ -81,6 +81,7 @@ public class AddTemplateController implements Initializable {
     private int mode;
     
     public static final String errorMessage = "Only numbers without decimals";
+    public static final String errorMessage2 = "Not zero, please";
     
     private Alert alert;
     @FXML
@@ -115,7 +116,13 @@ public class AddTemplateController implements Initializable {
         numberEField.textProperty().addListener((observable, oldVal, newVal) -> { 
             eNumberE = checkNum(newVal);
             if(eNumberE) labelNumberE.setText(errorMessage);
-            else labelNumberE.setText("");
+            else {
+                eNumberE = checkZero(newVal);
+                if(eNumberE)
+                    labelNumberE.setText(errorMessage2);
+                else 
+                    labelNumberE.setText("");
+            }
             updateError();
         });
         workingField.textProperty().addListener((observable, oldVal, newVal) -> { 
@@ -133,7 +140,13 @@ public class AddTemplateController implements Initializable {
         numberCField.textProperty().addListener((observable, oldVal, newVal) -> { 
             eNumberC = checkNum(newVal);
             if(eNumberC) labelNumberC.setText(errorMessage);
-            else labelNumberC.setText("");
+            else {
+                eNumberC = checkZero(newVal);
+                if(eNumberC)
+                    labelNumberC.setText(errorMessage2);
+                else 
+                    labelNumberC.setText("");
+            }
             updateError();
         });
         restCField.textProperty().addListener((observable, oldVal, newVal) -> { 
@@ -258,6 +271,17 @@ public class AddTemplateController implements Initializable {
         
         if(!res){
             labelCode.setText("");
+        }
+        
+        return res;
+    }
+    
+    private boolean checkZero(String data){
+        boolean res = true;
+        
+        int n = Integer.parseInt(data);
+        if(n > 0) {
+            res = false;
         }
         
         return res;

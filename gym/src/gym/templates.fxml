@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.TemplatesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.TemplatesController">
    <center>
       <TableView fx:id="templateView" prefHeight="340.0" prefWidth="480.0" BorderPane.alignment="CENTER">
         <columns>
@@ -26,11 +26,11 @@
       </TableView>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="333.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="70.0" text="Add" />
-            <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#buttonHandler" text="Details" />
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="70.0" text="Return" />
+            <Button fx:id="addButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="35.0" prefWidth="80.0" text="Add" />
+            <Button fx:id="detailsButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" text="Details" />
+            <Button fx:id="returnButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="Return" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" />
@@ -40,11 +40,11 @@
    <bottom>
       <HBox fx:id="selectBox" minHeight="0.0" prefHeight="58.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="okButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="OK">
+            <Button fx:id="okButton" minHeight="0.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="OK">
                <HBox.margin>
                   <Insets left="550.0" />
                </HBox.margin></Button>
-            <Button fx:id="cancelButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
+            <Button fx:id="cancelButton" minHeight="0.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="Cancel" />
          </children>
          <BorderPane.margin>
             <Insets top="10.0" />
@@ -76,10 +76,13 @@
             </HBox>
             <HBox prefHeight="42.0" prefWidth="600.0">
                <children>
-                  <Label text="Filter: ">
+                  <Label minWidth="38.0" text="Filter: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Label>
                   <TextField fx:id="filterField" styleClass="TextForm" />
                </children>

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="623.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.GroupsController">
    <center>
       <TableView fx:id="groupView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
@@ -30,10 +30,10 @@
    <right>
       <VBox prefHeight="213.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Add" />
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Edit" />
-            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Stats" />
-            <Button fx:id="returnButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Return" />
+            <Button fx:id="addButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="80.0" text="Add" />
+            <Button fx:id="editButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="80.0" text="Edit" />
+            <Button fx:id="statsButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="80.0" text="Stats" />
+            <Button fx:id="returnButton" minHeight="0.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="Return" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="10.0" />
@@ -65,12 +65,12 @@
             </HBox>
             <HBox prefHeight="53.0" prefWidth="600.0">
                <children>
-                  <Label text="Filter: ">
+                  <Label minWidth="38.0" text="Filter: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="25.0" />
+                        <Insets left="25.0" right="10.0" />
                      </HBox.margin>
                   </Label>
                   <TextField fx:id="filterField" styleClass="TextForm" />
@@ -83,18 +83,21 @@
       </VBox>
    </top>
    <bottom>
-      <HBox fx:id="selectBox" minHeight="0.0" prefHeight="58.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="selectBox" minHeight="0.0" prefHeight="76.0" prefWidth="620.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="okButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="OK">
+            <Button fx:id="okButton" minHeight="0.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="OK">
                <HBox.margin>
                   <Insets left="425.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="cancelButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
+            <Button fx:id="cancelButton" minHeight="0.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" text="Cancel" />
          </children>
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </HBox>
    </bottom>
 </BorderPane>

@@ -12,79 +12,100 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.AddTemplateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="640.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.AddTemplateController">
    <center>
       <VBox prefHeight="238.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefWidth="120.0" text="Session Code: ">
+                  <Label minWidth="120.0" prefWidth="120.0" text="Session Code: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="codeField" styleClass="TextForm" stylesheets="@theCSS.css" />
+                  <TextField fx:id="codeField" minWidth="187.0" styleClass="TextForm" stylesheets="@theCSS.css" />
                   <Label fx:id="labelCode" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefWidth="120.0" text="Warming Time: ">
+                  <Label minWidth="120.0" prefWidth="120.0" text="Warming Time: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="warmingField" styleClass="TextForm" />
+                  <TextField fx:id="warmingField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelWarming" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefWidth="120.0" text="Nº Exercises: ">
+                  <Label minWidth="120.0" prefWidth="120.0" text="Nº Exercises: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberEField" styleClass="TextForm" />
+                  <TextField fx:id="numberEField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelNumberE" minWidth="210.0" prefHeight="25.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="120.0" text="Working Time:">
+                  <Label minWidth="120.0" prefHeight="18.0" prefWidth="120.0" text="Working Time:">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="workingField" styleClass="TextForm" />
+                  <TextField fx:id="workingField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelWorking" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="120.0" text="Rest Time (Exs): ">
+                  <Label minWidth="120.0" prefHeight="20.0" prefWidth="120.0" text="Rest Time (Exs): ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="restEField" styleClass="TextForm" />
+                  <TextField fx:id="restEField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelRestE" minWidth="210.0" prefHeight="25.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="115.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="115.0">
                <children>
-                  <Label prefWidth="120.0" text="Nº Circuit Reps: ">
+                  <Label minWidth="120.0" prefWidth="120.0" text="Nº Circuit Reps: ">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberCField" styleClass="TextForm" />
+                  <TextField fx:id="numberCField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelNumberC" minWidth="210.0" prefHeight="26.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="33.0" prefWidth="575.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="575.0">
                <children>
-                  <Label prefWidth="120.0" text="Circuit Rest Time:">
+                  <Label minWidth="120.0" prefWidth="120.0" text="Circuit Rest Time:">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="restCField" styleClass="TextForm" />
+                  <TextField fx:id="restCField" minWidth="187.0" promptText="In seconds" styleClass="TextForm" />
                   <Label fx:id="labelRestC" minWidth="210.0" prefHeight="24.0" prefWidth="210.0" textFill="#f41717" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <padding>
@@ -96,14 +117,17 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
+      <HBox alignment="CENTER" prefHeight="77.0" prefWidth="682.0" spacing="5.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" stylesheets="@theCSS.css" text="OK">
+            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="80.0" stylesheets="@theCSS.css" text="OK">
                <HBox.margin>
                   <Insets left="425.0" />
                </HBox.margin></Button>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefWidth="71.0" stylesheets="@theCSS.css" text="Cancel" />
+            <Button fx:id="cancelButton" minWidth="80.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="47.0" prefWidth="80.0" stylesheets="@theCSS.css" text="Cancel" />
          </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </HBox>
    </bottom>
    <top>
