@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="867.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="867.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -52,7 +52,7 @@
                   </Line>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="21.0" prefWidth="728.0">
+            <HBox alignment="TOP_CENTER" prefHeight="93.0" prefWidth="867.0">
                <children>
                   <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="myTrainingPal" wrappingWidth="465.0068359375">
                      <font>
@@ -64,7 +64,7 @@
                   <Insets top="80.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="728.0">
+            <HBox alignment="TOP_CENTER" prefHeight="101.0" prefWidth="867.0">
                <children>
                   <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval Timer">
                      <font>
