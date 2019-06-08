@@ -60,7 +60,7 @@
                         <Font size="72.0" />
                      </font>
                   </Text>
-                  <ProgressBar prefHeight="82.0" prefWidth="711.0" progress="0.0" />
+                  <ProgressBar fx:id="exercisesProgress" prefHeight="82.0" prefWidth="711.0" progress="0.0" />
                </children>
                <HBox.margin>
                   <Insets left="200.0" />
@@ -73,7 +73,7 @@
                         <Font size="72.0" />
                      </font>
                   </Text>
-                  <ProgressBar prefHeight="82.0" prefWidth="711.0" progress="0.0" />
+                  <ProgressBar fx:id="circuitsProgress" prefHeight="82.0" prefWidth="711.0" progress="0.0" />
                </children>
                <HBox.margin>
                   <Insets left="100.0" />
