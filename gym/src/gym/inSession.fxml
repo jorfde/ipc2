@@ -64,7 +64,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="261.0" prefWidth="1920.0" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="300.0" prefWidth="600.0">
+            <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises progress">
                      <font>
@@ -77,7 +77,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="300.0" prefWidth="600.0">
+            <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Circuits progress">
                      <font>
