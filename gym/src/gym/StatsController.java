@@ -160,6 +160,10 @@ public class StatsController implements Initializable {
         working.setName("Working Time");
         rest.setName("Rest Time");
         real.setName("Real Time");
+        
+        xAxis.setLabel("Dates");
+        yAxis.setLabel("Seconds");
+        xAxis.setAnimated(false);
     }    
 
     @FXML
@@ -261,32 +265,6 @@ public class StatsController implements Initializable {
    
     void selected(int index) {
         this.sel = index;
-    }
-    
-    private void introduceData(int n){
-        lineChart.getData().removeAll(working);
-        lineChart.getData().removeAll(rest);
-        lineChart.getData().removeAll(real);
-        
-        working = new XYChart.Series();
-        rest = new XYChart.Series();
-        real = new XYChart.Series();
-        
-        working.setName("Working Time");
-        rest.setName("Rest Time");
-        real.setName("Real Time");
-        
-        
-        
-        for(int i=0;i < n;i++){
-            Sesion s = sesions.get(i);
-            SesionTipo st = s.getTipo();
-            real.getData().add(new XYChart.Data<>(s.getFecha().toString(),s.getDuracion().getSeconds()));
-            working.getData().add(new XYChart.Data<>(s.getFecha().toString(), getWorking(st)));
-            rest.getData().add(new XYChart.Data<>(s.getFecha().toString(), getRest(st)));
-        }
-        
-        lineChart.getData().addAll(real, working, rest);
     }
     
     private int getWorking(SesionTipo s){
