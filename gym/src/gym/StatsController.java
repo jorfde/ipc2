@@ -70,6 +70,10 @@ public class StatsController implements Initializable {
     private Button returnButton;
     @FXML
     private Label labelGroup;
+    @FXML
+    private TextField sessionsField;
+    @FXML
+    private Label labelSessions;
     
     private Stage primaryStage;
     private Scene prevScene;
@@ -92,6 +96,8 @@ public class StatsController implements Initializable {
     private int mode;
     
     private GroupsController gc;
+    
+    private boolean eSession = true;
 
     /**
      * Initializes the controller class.
@@ -112,6 +118,31 @@ public class StatsController implements Initializable {
                     
                 if(realTime.isSelected()){
                     addSeries(3, sesions.size());
+                } 
+            }
+        });
+        
+        sessionsField.textProperty().addListener((observable, oldVal, newVal) -> { 
+            eSession = checkNum(newVal);
+            if(eSession) {
+                labelSessions.setText("Integer numbers only");
+            } else {
+                labelSessions.setText("");
+                int n = Integer.parseInt(sessionsField.getText());
+                n = (int) Math.min(n, sesions.size());
+                if(workingTime.isSelected()){
+                    deleteSeries(1);
+                    addSeries(1, n);
+                } 
+
+                if(restTime.isSelected()){
+                    deleteSeries(2);
+                    addSeries(2, n);
+                }
+                    
+                if(realTime.isSelected()){
+                    deleteSeries(3);
+                    addSeries(3, n);
                 } 
             }
         });
@@ -379,5 +410,15 @@ public class StatsController implements Initializable {
         group = groups.get(index);
         groupField.setText(group.getCodigo());
         eGroup = false;
+    }
+    
+    private boolean checkNum(String data){
+        boolean res = true;
+        
+        if(data.matches("[0-9]+")){
+            res = false;
+        } 
+        
+        return res;
     }
 }
