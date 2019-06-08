@@ -68,10 +68,10 @@
          <children>
             <ImageView fitHeight="75.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/group.png" />
+                  <Image url="@../images/group%20ADDD.png" />
                </image>
                <HBox.margin>
-                  <Insets bottom="10.0" left="25.0" right="20.0" top="10.0" />
+                  <Insets bottom="10.0" left="25.0" right="35.0" top="10.0" />
                </HBox.margin>
             </ImageView>
             <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new group">

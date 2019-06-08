@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
    <center>
       <LineChart fx:id="lineChart" prefHeight="217.0" prefWidth="481.0" BorderPane.alignment="CENTER">
         <xAxis>
@@ -28,25 +28,40 @@
    <bottom>
       <HBox fx:id="windowBox" prefHeight="63.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="75.0" text="OK">
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="OK">
                <HBox.margin>
-                  <Insets left="420.0" />
+                  <Insets left="550.0" />
                </HBox.margin></Button>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="75.0" text="Cancel" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
    <right>
       <VBox prefHeight="237.0" prefWidth="118.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Work Time" />
-            <CheckBox fx:id="restTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Rest Time" />
-            <CheckBox fx:id="realTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Real Time" />
-            <Label text="Sessions: " />
-            <TextField fx:id="sessionsField" />
+            <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Work Time">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="restTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Rest Time">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="realTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Real Time">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></CheckBox>
+            <Label text="Sessions: ">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font></Label>
+            <TextField fx:id="sessionsField" styleClass="TextForm" />
             <Label fx:id="labelSessions" minWidth="125.0" prefHeight="21.0" prefWidth="125.0" textFill="#f41717" />
             <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="99.0" text="Return" />
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
    <top>
@@ -72,7 +87,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="groupField" styleClass="TextForm" />
-                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" styleClass="saveButton" text="Search Group">
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="0.0" prefWidth="111.0" styleClass="saveButton" text="Search Group">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>

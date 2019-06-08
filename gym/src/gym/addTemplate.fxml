@@ -109,12 +109,12 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" styleClass="title" BorderPane.alignment="TOP_CENTER">
          <children>
-            <ImageView fitHeight="107.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../crossfitMgmt/src/images/settings.png" />
+                  <Image url="@../images/template_after_ps_%20ADD.png" />
                </image>
                <HBox.margin>
-                  <Insets bottom="5.0" left="25.0" right="35.0" top="10.0" />
+                  <Insets bottom="10.0" left="25.0" right="35.0" top="10.0" />
                </HBox.margin>
             </ImageView>
             <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="New Template" wrappingWidth="412.71875">
