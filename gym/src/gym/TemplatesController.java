@@ -166,6 +166,8 @@ public class TemplatesController implements Initializable {
     }
     
     private void createScene(int mode) throws IOException{
+        double height = primaryStage.getHeight();
+        double width = primaryStage.getWidth();
         FXMLLoader myLoader;
         Parent root;
         Scene scene;
@@ -209,6 +211,9 @@ public class TemplatesController implements Initializable {
                 primaryStage.setScene(scene);
                 break;
         }
+        
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(width);
     }
     
     private void createWindow(int index, int mode) throws IOException{

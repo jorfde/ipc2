@@ -118,7 +118,7 @@ public class AddGroupController implements Initializable {
         switch(((Node)event.getSource()).getId()){
             case "okButton": 
                 if(mode == ADD){
-                    title.setText("Add Group");
+                    
                     Grupo s = new Grupo();
                     s.setCodigo(codeField.getText());
                     s.setDescripcion(descriptionField.getText());
@@ -129,7 +129,7 @@ public class AddGroupController implements Initializable {
                     groups.add(s);
                     alert.setContentText("You successfully added a GROUP.");
                 } else if(mode == EDIT){
-                    title.setText("Edit Group");
+                    
                     Grupo s = new Grupo();
                     s.setCodigo(codeField.getText());
                     s.setDescripcion(descriptionField.getText());
@@ -167,7 +167,7 @@ public class AddGroupController implements Initializable {
         this.mode = mode;
         
         if (index >= 0){
-            //title.setText("Template's Details");
+            title.setText("Add Group");
             Grupo grupo = groups.get(index);
             codeField.setText(grupo.getCodigo());
             
@@ -177,11 +177,13 @@ public class AddGroupController implements Initializable {
                 templateField.setText(grupo.getDefaultTipoSesion().getCodigo());            
             
             if(mode == DETAILS){
+                
                 codeField.setEditable(false);
                 descriptionField.setEditable(false);
                 templateField.setEditable(false);
             }
             if(mode == EDIT){
+                title.setText("Edit Group");
                 codeField.setEditable(false);
                 eCode = false;
             }

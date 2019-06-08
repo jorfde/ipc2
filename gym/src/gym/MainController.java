@@ -78,6 +78,10 @@ public class MainController implements Initializable {
     }
     
     private void createScene(int mode) throws IOException{
+        double height = primaryStage.getHeight();
+        double width = primaryStage.getWidth();
+        
+        
         FXMLLoader myLoader;
         Parent root;
         Scene scene;
@@ -112,6 +116,7 @@ public class MainController implements Initializable {
                 groupController.initStage(primaryStage);
                 groupController.initMode(DEFAULT, null, null);
                 scene = new Scene(root);
+                //scene
                 primaryStage.setScene(scene);
                 break;
                 
@@ -125,6 +130,9 @@ public class MainController implements Initializable {
                 primaryStage.setScene(scene);
                 break;
         }
+        
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(width);
     }
     
     public void ok(boolean res, Grupo g, SesionTipo st) throws IOException{
@@ -137,7 +145,7 @@ public class MainController implements Initializable {
             myLoader = new FXMLLoader(getClass().getResource("inSession.fxml"));
             root = (Parent) myLoader.load();
             InSessionController inSessionController = myLoader.<InSessionController>getController();
-            inSessionController.initData(g, st);
+            inSessionController.initData(g, st, aNewStage);
             scene = new Scene(root);
             aNewStage.setScene(scene);
             aNewStage.initModality(Modality.APPLICATION_MODAL);

@@ -185,6 +185,8 @@ public class GroupsController implements Initializable {
     }
     
     private void createScene(int mode) throws IOException{
+        double height = primaryStage.getHeight();
+        double width = primaryStage.getWidth();
         FXMLLoader myLoader;
         Parent root;
         Scene scene;
@@ -228,6 +230,9 @@ public class GroupsController implements Initializable {
                 primaryStage.setScene(scene);
                 break;
         }
+        
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(width);
     }
     
     private void invisibleBox(){

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -31,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelo.Grupo;
 import modelo.Sesion;
 import modelo.SesionTipo;
@@ -85,6 +87,8 @@ public class InSessionController implements Initializable {
     
     private long initTime;
     
+    private Stage stage;
+    
     Image playImg = new Image(getClass().getResource("/images/play-button.png").toString() );
     Image pauseImg = new Image(getClass().getResource("/images/pause_ps.png").toString() );
     @FXML
@@ -98,6 +102,8 @@ public class InSessionController implements Initializable {
     private Text exercises;
     @FXML
     private Text circuits;
+    @FXML
+    private Button okButton;
 
     /**
      * Initializes the controller class.
@@ -118,9 +124,7 @@ public class InSessionController implements Initializable {
                 if(index >= size){
                     exercisesProgress.setProgress(1);
                     circuitsProgress.setProgress(1);
-                    
-                    lastTime = System.currentTimeMillis();
-                    end(); 
+                    end();
                 } if(index < size){
                     servicio = new CronoService(training.get(index) * 1000 + 1000);
                     servicio.setTiempo(timeText.textProperty());
@@ -131,6 +135,8 @@ public class InSessionController implements Initializable {
             }
         });
         
+        
+        
         exercisesProgress.progressProperty().addListener((observable, oldVal, newVal) -> { 
             exercises.setText("Exercise (" + countE + " / " + exerN + ")");
         });
@@ -140,6 +146,7 @@ public class InSessionController implements Initializable {
         
         skipButton.disableProperty().bind(aux);
         playButton.disableProperty().bind(aux);
+        okButton.disableProperty().bind(aux.not());
     }    
 
     @FXML
@@ -191,12 +198,21 @@ public class InSessionController implements Initializable {
                     playImage.imageProperty().set(pauseImg);
                 }
                 break;
+            case "okButton": 
+                end();
+                exit();
+                break;
         }
         if (index < size)
             updatePart();
     }
     
-    public void initData(Grupo grupo, SesionTipo template){
+    private void exit(){
+        okButton.getScene().getWindow().hide();
+    }
+    
+    public void initData(Grupo grupo, SesionTipo template, Stage s){
+        this.stage = s;
         this.template = template;
         this.grupo = grupo;
         
@@ -221,6 +237,11 @@ public class InSessionController implements Initializable {
         exercises.setText("Exercise (" + 0 + " / " + exerN + ")");
         
         updatePart();
+        
+        stage.setOnCloseRequest((WindowEvent event) ->{
+            servicio.cancel();
+            end();
+        });
     }
     
     private void fillTraining(){
@@ -249,14 +270,16 @@ public class InSessionController implements Initializable {
     }
     
     private void end(){
+        lastTime = System.currentTimeMillis();
         Sesion s = new Sesion();
         s.setFecha(LocalDateTime.now());
         s.setTipo(template);
-        Duration d = Duration.ofMillis(lastTime - initTime);
+        Duration d = Duration.ofSeconds((lastTime - initTime)/1000);
         s.setDuracion(d);
         grupo.getSesiones().add(s);
         
         grupo.setDefaultTipoSesion(template);
+        
     }
     
     private void bPlaySoundOnAction() {

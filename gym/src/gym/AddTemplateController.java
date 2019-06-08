@@ -201,7 +201,7 @@ public class AddTemplateController implements Initializable {
             
             
             if(mode == DETAILS){
-                title.setText("Details of " + template.getCodigo());
+                title.setText("Template Details");
                 codeField.setEditable(false);
                 warmingField.setEditable(false);
                 numberEField.setEditable(false);

@@ -107,14 +107,17 @@ public class StatsController implements Initializable {
             if(!eGroup) {
                 sesions = group.getSesiones();
                 if(workingTime.isSelected()){
+                    deleteSeries(1);
                     addSeries(1, sesions.size());
                 } 
 
                 if(restTime.isSelected()){
+                    deleteSeries(2);
                     addSeries(2, sesions.size());
                 }
                     
                 if(realTime.isSelected()){
+                    deleteSeries(3);
                     addSeries(3, sesions.size());
                 } 
             }
@@ -310,6 +313,8 @@ public class StatsController implements Initializable {
     }
     
     private void createScene(int mode) throws IOException{
+        double height = primaryStage.getHeight();
+        double width = primaryStage.getWidth();
         FXMLLoader myLoader;
         Parent root;
         Scene scene;
@@ -353,6 +358,9 @@ public class StatsController implements Initializable {
                 primaryStage.setScene(scene);
                 break;
         }
+        
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(width);
     }
     
     private void deleteSeries(int s){
@@ -407,6 +415,24 @@ public class StatsController implements Initializable {
         group = groups.get(index);
         groupField.setText(group.getCodigo());
         eGroup = false;
+        sesions = group.getSesiones();
+        
+        int n = sesions.size();
+        
+        if(workingTime.isSelected()){
+                    deleteSeries(1);
+                    addSeries(1, n);
+                } 
+
+                if(restTime.isSelected()){
+                    deleteSeries(2);
+                    addSeries(2, n);
+                }
+                    
+                if(realTime.isSelected()){
+                    deleteSeries(3);
+                    addSeries(3, n);
+                } 
     }
     
     private boolean checkNum(String data){
