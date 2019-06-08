@@ -8,6 +8,8 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -65,16 +67,24 @@
       </VBox>
    </right>
    <top>
-      <VBox prefHeight="155.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="187.0" prefWidth="728.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="173.0" prefWidth="599.0" styleClass="title">
+            <HBox prefHeight="144.0" prefWidth="728.0" styleClass="title">
                <children>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" right="35.0" top="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../images/stats.png" />
+                     </image>
+                  </ImageView>
                   <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics">
                      <font>
                         <Font name="Roboto" size="64.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="25.0" top="10.0" />
+                        <Insets top="10.0" />
                      </HBox.margin>
                   </Text>
                </children>

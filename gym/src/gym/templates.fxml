@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -54,12 +56,20 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="title">
                <children>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" right="35.0" top="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../images/template_after_ps.png" />
+                     </image>
+                  </ImageView>
                   <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title2" text="Templates">
                      <font>
                         <Font name="Roboto" size="64.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="15.0" top="10.0" />
+                        <Insets top="10.0" />
                      </HBox.margin>
                   </Text>
                </children>
