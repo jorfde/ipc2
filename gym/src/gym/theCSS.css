@@ -1,4 +1,40 @@
 
+.dashboard{
+ -fx-background-color: #e9e9e9;
+}
+
+.button{
+  -fx-background-radius: 10em;
+  -fx-background-color: #8e8e8e;
+  -fx-border: none;
+  -fx-padding: 15px;
+  -fx-text-align: center;
+  -fx-text-decoration: none;
+  -fx-display: inline-block;
+  -fx-font-family: Arial;
+  -fx-text-fill: #ffffff;
+}
+.title{
+  -fx-background-color: #373737;
+}
+.weights{
+  -fx-background-color: #8e8e8e;
+}
+
+.TextForm{
+-fx-background-color: #757575;
+}
+
+.saveButton{
+   -fx-background-color: #4CAF50;
+}
+.controlButton{
+   -fx-background-color: #e9e9e9;
+}
+
+
+
+
 /*
 .titleButton{
   -fx-background-color: #2196f3;
@@ -14,21 +50,7 @@
 
 .bar{
   -fx-background-color: #8e8e8e;
-}*/
-
-.button{
-  -fx-background-radius: 10em;
-  -fx-background-color: #8e8e8e;
-  -fx-border: none;
-  -fx-padding: 15px;
-  -fx-text-align: center;
-  -fx-text-decoration: none;
-  -fx-display: inline-block;
-  -fx-font-family: Arial;
-  -fx-text-fill: #ffffff;
 }
-
-/*
 .specialButton{
   -fx-background-radius: 10em;
   -fx-background-color: #373737;
@@ -40,13 +62,8 @@
   -fx-font-size: 14px;
   -fx-font-family: Arial;
   -fx-text-fill: #ffffff;
-}*/
-
-.dashboard{
- -fx-background-color: #ffffff;
 }
 
-/*
 .tableColumn{
 
    -fx-background-color: #2196f3;
@@ -58,24 +75,6 @@
    -fx-highlight-text-fill: red !important;
 }
 
-*/
-.title{
-  -fx-background-color: #373737;
-}
-.weights{
-  -fx-background-color: #8e8e8e;
-}
-
-.TextForm{
--fx-background-color: #757575;
-}
-
-.saveButton{
-   -fx-background-color: #4CAF50;
-}
-
-
-/*
 .textFormInput{
  -fx-font-family: Arial;
 }

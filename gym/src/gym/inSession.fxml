@@ -11,49 +11,60 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
-   <top>
-      <HBox prefHeight="142.0" prefWidth="1920.0" spacing="5.0" BorderPane.alignment="TOP_RIGHT">
-         <children>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#buttonHandler">
-               <graphic>
-                  <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/play-button.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#buttonHandler">
-               <graphic>
-                  <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="1300.0" right="50.0" top="50.0" />
-         </BorderPane.margin>
-      </HBox>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
    <center>
       <HBox alignment="CENTER" prefHeight="537.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="timeText" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="20:55" wrappingWidth="830.419921875">
-               <font>
-                  <Font size="300.0" />
-               </font>
-            </Text>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text fx:id="timeText" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="20:55" wrappingWidth="830.419921875">
+                     <font>
+                        <Font size="300.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="142.0" prefWidth="1920.0" spacing="100.0">
+                     <children>
+                        <Button fx:id="playButton" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/play-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="restartButton1" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/fast-forward.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="restartButton" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/refresh.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
          </children>
       </HBox>
    </center>
    <bottom>
       <HBox prefHeight="261.0" prefWidth="1920.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="300.0" prefWidth="600.0">
                <children>
                   <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises progress">
                      <font>
@@ -66,7 +77,7 @@
                   <Insets left="200.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="300.0" prefWidth="600.0">
                <children>
                   <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Circuits progress">
                      <font>
@@ -82,4 +93,18 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="timeText1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You're in warming mode" wrappingWidth="830.419921875">
+               <font>
+                  <Font size="72.0" />
+               </font>
+            </Text>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="60.0" top="60.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
 </BorderPane>
