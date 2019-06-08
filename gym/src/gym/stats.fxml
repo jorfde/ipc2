@@ -34,7 +34,7 @@
                <HBox.margin>
                   <Insets left="550.0" />
                </HBox.margin></Button>
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Return" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
@@ -59,6 +59,11 @@
                </font></Label>
             <TextField fx:id="sessionsField" styleClass="TextForm" />
             <Label fx:id="labelSessions" minWidth="125.0" prefHeight="21.0" prefWidth="125.0" textFill="#f41717" />
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="139.0" text="Return">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
