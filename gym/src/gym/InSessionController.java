@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -89,30 +90,49 @@ public class InSessionController implements Initializable {
     @FXML
     private ImageView playImage;
     
-    private int countE;
-    private int countC;
+    private int countE = 0;
+    private int countC = 0;
+    
+    private BooleanProperty aux = new SimpleBooleanProperty(false);
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        exercisesProgress.setProgress(0);
+        circuitsProgress.setProgress(0);
         playImage.imageProperty().set(pauseImg);
         timeText.textProperty().addListener((observable, oldVal, newVal) -> { 
+            if(index == size - 1)
+                    aux.set(true);
             if(newVal.equals("00:00")){
+                servicio.cancel();
                 bPlaySoundOnAction();
                 index++;
+                if(index == size + 1){
+                    aux.set(true);
+                }
                 if(index == size){
+                    exercisesProgress.setProgress(1);
+                    circuitsProgress.setProgress(1);
+                    
                     lastTime = System.currentTimeMillis();
                     end();
+                    
+                    
                 } else {
-                    servicio.cancel();
                     servicio = new CronoService(training.get(index) * 1000 + 1000);
                     servicio.setTiempo(timeText.textProperty());
                     servicio.start();
+                    updatePart();
                 }
+                
             }
         });
+        
+        skipButton.disableProperty().bind(aux);
+        playButton.disableProperty().bind(aux);
     }    
 
     @FXML
@@ -138,27 +158,41 @@ public class InSessionController implements Initializable {
                 servicio.start();
                 play = false;
                 playImage.imageProperty().set(pauseImg);
+                exercisesProgress.setProgress(0);
+                circuitsProgress.setProgress(0);
+                countE = 0;
+                countC = 0;
+                aux.set(false);
                 break;
                 
             case "skipButton": 
-                if(index + 1 != size)
-                    index++;
-                servicio.cancel();
-                servicio = new CronoService(training.get(index) * 1000 + 1000);
-                servicio.setTiempo(timeText.textProperty());
-                servicio.start();
-                play = false;
-                playImage.imageProperty().set(pauseImg);
+                index++;
+                if(index == size + 1){
+                    aux.set(true);
+                    timeText.setText("00:00");
+                    end();
+                }
+                
+                
+                if(index < size){
+                    servicio.cancel();
+                    servicio = new CronoService(training.get(index) * 1000 + 1000);
+                    servicio.setTiempo(timeText.textProperty());
+                    servicio.start();
+                    play = false;
+                    playImage.imageProperty().set(pauseImg);
+                }
                 break;
         }
-        updatePart();
+        if (index != size)
+            updatePart();
     }
     
     void initStage(Stage stage) {
         primaryStage = stage;
         prevScene = stage.getScene();
         prevTitle = stage.getTitle();
-        primaryStage.setMaximized(true);
+        
     }
     
     public void initData(Grupo grupo, SesionTipo template){
@@ -180,7 +214,7 @@ public class InSessionController implements Initializable {
         servicio.setTiempo(timeText.textProperty());
         servicio.start();
         
-        size = training.size();
+        size = part.size();
         
         updatePart();
     }
@@ -234,15 +268,31 @@ public class InSessionController implements Initializable {
                 
             case EXERCISE:
                 partMode.setText("EXERCISE TIME");
-                if(index == size -1){
+                if(index == size - 1){
                     partMode.setText("LAST EXERCISE TIME");
                 }
+                if(countE == exerN){
+                    countE = 0;
+                    countC++;
+                    if(countC == circN){
+                        countE=exerN;
+                    }
+                    
+                } 
+                updateProgress();
+                countE++;
                 break;
                 
             case REST:
+                updateProgress();
                 partMode.setText("RESTING TIME");
                 break;
         }
+    }
+    
+    private void updateProgress(){
+        circuitsProgress.setProgress((double)countC/circN);
+        exercisesProgress.setProgress((double)countE/exerN);
     }
     
 }
@@ -290,15 +340,11 @@ class CronoService extends Service<Void> {
                     if (isCancelled()) {
                         break;
                     }
-                    if (countdown) {
-                        if (calculaCountDown()) {
-                            break;
-                        }
-
-                    }
+                    calculaCountDown();
                 }
                 return null;
             }
+
 
             private boolean calculaCountDown() {
                 lastTime = System.currentTimeMillis();

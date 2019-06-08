@@ -132,18 +132,17 @@ public class MainController implements Initializable {
             FXMLLoader myLoader;
             Parent root;
             Scene scene;
+            Stage aNewStage = new Stage();
             
             myLoader = new FXMLLoader(getClass().getResource("inSession.fxml"));
             root = (Parent) myLoader.load();
             InSessionController inSessionController = myLoader.<InSessionController>getController();
-            inSessionController.initStage(primaryStage);
             inSessionController.initData(g, st);
             scene = new Scene(root);
-            primaryStage.setScene(scene);
+            aNewStage.setScene(scene);
+            aNewStage.initModality(Modality.APPLICATION_MODAL);
+            aNewStage.setMaximized(true);
+            aNewStage.showAndWait();
         }
-    }
-    
-    private void makeSession(){
-    
     }
 }
