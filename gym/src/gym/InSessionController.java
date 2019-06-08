@@ -94,6 +94,10 @@ public class InSessionController implements Initializable {
     private int countC = 0;
     
     private BooleanProperty aux = new SimpleBooleanProperty(false);
+    @FXML
+    private Text exercises;
+    @FXML
+    private Text circuits;
 
     /**
      * Initializes the controller class.
@@ -129,6 +133,10 @@ public class InSessionController implements Initializable {
                 }
                 
             }
+        });
+        
+        exercisesProgress.progressProperty().addListener((observable, oldVal, newVal) -> { 
+            exercises.setText("");
         });
         
         skipButton.disableProperty().bind(aux);
