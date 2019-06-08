@@ -6,22 +6,16 @@
 
 package gym;
 
-import static gym.MainController.GROUP;
-import static gym.MainController.TEMPLATE;
 import java.net.URL;
 import java.time.Duration;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -31,9 +25,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Grupo;
+import modelo.Sesion;
 import modelo.SesionTipo;
 
 /**
@@ -42,16 +40,24 @@ import modelo.SesionTipo;
  * @author Stéphane
  */
 public class InSessionController implements Initializable {
-    
-    private Stage primaryStage;
-    private Scene prevScene;
-    private String prevTitle;
+    @FXML
+    private Text partMode;
+    @FXML
+    private ProgressBar exercisesProgress;
+    @FXML
+    private ProgressBar circuitsProgress;
+    @FXML
+    private Text timeText;
     @FXML
     private Button playButton;
     @FXML
-    private Button restartButton;
+    private Button skipButton;
     @FXML
-    private Text timeText;
+    private Button restartButton;
+
+   private Stage primaryStage;
+    private Scene prevScene;
+    private String prevTitle;
     
     private int warmT, exerT, exerRest, exerN, circN, circRest;
     
@@ -62,43 +68,82 @@ public class InSessionController implements Initializable {
     private Property<Boolean> iniciado = new SimpleBooleanProperty(false);
     private boolean firstime;
     
-    private boolean play = true;
+    private boolean play = false;
     
     private ArrayList<Integer> training;
-    @FXML
-    private ProgressBar exercisesProgress;
-    @FXML
-    private ProgressBar circuitsProgress;
-    @FXML
-    private Text partMode;
-    @FXML
-    private Button skipButton;
     
     private int index = 0;
     
     private int size;
+    
+    private long lastTime;
+    
+    private long initTime;
+    
+    Image playImg = new Image(getClass().getResource("/images/play-button.png").toString() );
+    Image pauseImg = new Image(getClass().getResource("/images/pause.png").toString() );
+    @FXML
+    private ImageView playImage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        servicio = new CronoService(training.get(index));
-        servicio.setTiempo(timeText.textProperty());
-        
-        size = training.size();
-        
+        playImage.imageProperty().set(pauseImg);
         timeText.textProperty().addListener((observable, oldVal, newVal) -> { 
             if(newVal.equals("00:00")){
+                bPlaySoundOnAction();
                 index++;
-                servicio.cancel();
-                servicio = new CronoService(training.get(index) * 1000);
-                servicio.setTiempo(timeText.textProperty());
-                servicio.start();
+                if(index == size){
+                    lastTime = System.currentTimeMillis();
+                    end();
+                } else {
+                    servicio.cancel();
+                    servicio = new CronoService(training.get(index) * 1000 + 1000);
+                    servicio.setTiempo(timeText.textProperty());
+                    servicio.start();
+                }
             }
         });
     }    
+
+    @FXML
+    private void buttonHandler(ActionEvent event) {
+        switch(((Node)event.getSource()).getId()){
+            case "playButton": 
+                if(play){
+                    servicio.start();
+                    playImage.imageProperty().set(pauseImg);
+                } else {
+                    servicio.cancel();
+                    servicio.reset();
+                    playImage.imageProperty().set(playImg);
+                }
+                play = !play;
+                break;
+                
+            case "restartButton": 
+                index = 0;
+                servicio.cancel();
+                servicio = new CronoService(training.get(index) * 1000 + 1000);
+                servicio.setTiempo(timeText.textProperty());
+                servicio.start();
+                play = false;
+                playImage.imageProperty().set(pauseImg);
+                break;
+                
+            case "skipButton": 
+                index++;
+                servicio.cancel();
+                servicio = new CronoService(training.get(index) * 1000 + 1000);
+                servicio.setTiempo(timeText.textProperty());
+                servicio.start();
+                play = false;
+                playImage.imageProperty().set(pauseImg);
+                break;
+        }
+    }
     
     void initStage(Stage stage) {
         primaryStage = stage;
@@ -108,8 +153,6 @@ public class InSessionController implements Initializable {
     }
     
     public void initData(Grupo grupo, SesionTipo template){
-        System.out.println(template);
-        System.out.println(grupo);
         this.template = template;
         this.grupo = grupo;
         
@@ -121,43 +164,22 @@ public class InSessionController implements Initializable {
         circRest = template.getD_circuito();
         
         fillTraining();
-    }
-
-    @FXML
-    private void buttonHandler(ActionEvent event) {
-        switch(((Node)event.getSource()).getId()){
-            case "playButton": 
-                if(play){
-                    servicio.start();
-                } else {
-                    servicio.cancel();
-                }
-                play = !play;
-                break;
-                
-            case "restartButton": 
-                index = 0;
-                servicio.cancel();
-                servicio = new CronoService(training.get(index) * 1000);
-                servicio.setTiempo(timeText.textProperty());
-                servicio.start();
-                break;
-                
-            case "skipButton": 
-                index++;
-                servicio.cancel();
-                servicio = new CronoService(training.get(index) * 1000);
-                servicio.setTiempo(timeText.textProperty());
-                servicio.start();
-                break;
-        }
+        
+        initTime = System.currentTimeMillis();
+        
+        servicio = new CronoService(training.get(index) * 1000);
+        servicio.setTiempo(timeText.textProperty());
+        servicio.start();
+        
+        size = training.size();
     }
     
     private void fillTraining(){
+        
         training = new ArrayList();
         training.add(warmT);
         for(int i = 0; i < circN;i++){
-            for(int j = 0; i< exerN;j++){
+            for(int j = 0; j< exerN;j++){
                 training.add(exerT);
                 if (j != exerN - 1){
                     training.add(exerRest);
@@ -168,9 +190,25 @@ public class InSessionController implements Initializable {
             }
         }
     }
-
+    
+    private void end(){
+        Sesion s = new Sesion();
+        s.setFecha(LocalDateTime.now());
+        s.setTipo(template);
+        Duration d = Duration.ofMillis(lastTime - initTime);
+        s.setDuracion(d);
+        grupo.getSesiones().add(s);
+        
+        grupo.setDefaultTipoSesion(template);
+    }
+    
+    private void bPlaySoundOnAction() {
+        AudioClip plonkSound = new AudioClip(getClass().getResource("/sounds/ZenTemplateBell.wav").toString()    );
+        plonkSound.play();
+    }
     
 }
+
 
 class CronoService extends Service<Void> {
 
@@ -181,7 +219,7 @@ class CronoService extends Service<Void> {
     private static long stoppedTime = 0;// guarda la duracion del tiempo parados
 
     private boolean stopped = false;//indica si se ha parado el cronometro
-    private boolean countdown = false;// indica si esta en cuenta atras
+    private boolean countdown = true;// indica si esta en cuenta atras
     private long countDownMilis;
     
     private ArrayList<Integer> training;
@@ -219,8 +257,6 @@ class CronoService extends Service<Void> {
                             break;
                         }
 
-                    } else {
-                        calculaCountUp();
                     }
                 }
                 return null;
@@ -245,18 +281,6 @@ class CronoService extends Service<Void> {
                     });
                     return false;
                 }
-            }
-
-            private void calculaCountUp() {
-                lastTime = System.currentTimeMillis();
-                Long totalTime = (lastTime - startTime) - stoppedTime;
-                Duration duration = Duration.ofMillis(totalTime);
-                final Long minutos = duration.toMinutes();
-                final Long segundos = duration.minusMinutes(minutos).getSeconds();
-                final Long centesimas = duration.minusSeconds(segundos).toNanos() / 10000000;
-                Platform.runLater(() -> {
-                    tiempo.setValue(String.format("%02d", minutos) + ":" + String.format("%02d", segundos) + ":" + String.format("%02d", centesimas));
-                });
             }
         };
     }

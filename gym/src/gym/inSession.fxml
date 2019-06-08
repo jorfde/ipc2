@@ -26,7 +26,7 @@
                      <children>
                         <Button fx:id="playButton" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
                            <graphic>
-                              <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="playImage" fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/play-button.png" />
                                  </image>
