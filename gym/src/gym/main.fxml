@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.MainController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="600.0" styleClass="weights">
+            <HBox alignment="TOP_CENTER" prefHeight="111.0" prefWidth="728.0" styleClass="weights">
                <children>
                   <Line endX="-90.0" endY="180.0" layoutX="627.0" layoutY="-115.0" startX="-90.0" startY="226.0" stroke="#494949" strokeWidth="10.0">
                      <HBox.margin>
@@ -52,7 +52,7 @@
                   </Line>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="600.0">
+            <HBox alignment="TOP_CENTER" prefHeight="21.0" prefWidth="728.0">
                <children>
                   <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="myTrainingPal" wrappingWidth="465.0068359375">
                      <font>
@@ -61,10 +61,10 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="80.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="600.0">
+            <HBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="728.0">
                <children>
                   <Text fill="#494949" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval Timer">
                      <font>
@@ -79,21 +79,33 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="templateButton" mnemonicParsing="false" onAction="#buttonHandler" text="Template">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="groupButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="85.0" stylesheets="@theCSS.css" text="Group">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="85.0" stylesheets="@theCSS.css" text="Stats">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>

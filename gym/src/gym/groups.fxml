@@ -33,7 +33,6 @@
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Add" />
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Edit" />
             <Button fx:id="statsButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Stats" />
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="45.0" prefWidth="70.0" text="Return" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="10.0" />
@@ -90,7 +89,7 @@
                   <Insets left="425.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="cancelButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Cancel" />
+            <Button fx:id="returnButton" minHeight="0.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" text="Return" />
          </children>
          <BorderPane.margin>
             <Insets top="10.0" />

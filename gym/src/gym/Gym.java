@@ -26,8 +26,11 @@ public class Gym extends Application {
         MainController maincontroller = loader.<MainController>getController();
         maincontroller.initStage(stage);
         stage.setTitle("");
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
         stage.setScene(scene);
         stage.show();
+
     }
 
     /**
