@@ -18,7 +18,7 @@
    <center>
       <TableView fx:id="templateView" prefHeight="340.0" prefWidth="480.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="codeColumn" prefWidth="75.0" text="Code" />
+          <TableColumn fx:id="codeColumn" prefWidth="582.0" text="Code" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
