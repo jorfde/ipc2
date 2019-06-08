@@ -13,6 +13,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -29,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Grupo;
@@ -61,14 +63,41 @@ public class InSessionController implements Initializable {
     private boolean firstime;
     
     private boolean play = true;
+    
+    private ArrayList<Integer> training;
+    @FXML
+    private ProgressBar exercisesProgress;
+    @FXML
+    private ProgressBar circuitsProgress;
+    @FXML
+    private Text partMode;
+    @FXML
+    private Button skipButton;
+    
+    private int index = 0;
+    
+    private int size;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        servicio = new CronoService();
+        
+        servicio = new CronoService(training.get(index));
         servicio.setTiempo(timeText.textProperty());
+        
+        size = training.size();
+        
+        timeText.textProperty().addListener((observable, oldVal, newVal) -> { 
+            if(newVal.equals("00:00")){
+                index++;
+                servicio.cancel();
+                servicio = new CronoService(training.get(index) * 1000);
+                servicio.setTiempo(timeText.textProperty());
+                servicio.start();
+            }
+        });
     }    
     
     void initStage(Stage stage) {
@@ -79,6 +108,8 @@ public class InSessionController implements Initializable {
     }
     
     public void initData(Grupo grupo, SesionTipo template){
+        System.out.println(template);
+        System.out.println(grupo);
         this.template = template;
         this.grupo = grupo;
         
@@ -88,6 +119,8 @@ public class InSessionController implements Initializable {
         exerN = template.getNum_ejercicios();
         circN = template.getNum_circuitos();
         circRest = template.getD_circuito();
+        
+        fillTraining();
     }
 
     @FXML
@@ -96,30 +129,45 @@ public class InSessionController implements Initializable {
             case "playButton": 
                 if(play){
                     servicio.start();
-                    iniciado.setValue(true);
                 } else {
                     servicio.cancel();
-                    servicio.reset();
-                    iniciado.setValue(false);
                 }
                 play = !play;
                 break;
                 
             case "restartButton": 
-                servicio.restaurarInicio();
-                firstime = true;
-                timeText.setText("00:00:00");
+                index = 0;
+                servicio.cancel();
+                servicio = new CronoService(training.get(index) * 1000);
+                servicio.setTiempo(timeText.textProperty());
+                servicio.start();
                 break;
                 
-            case "cancelButton": 
+            case "skipButton": 
+                index++;
                 servicio.cancel();
-                servicio.reset();
-                iniciado.setValue(false);
+                servicio = new CronoService(training.get(index) * 1000);
+                servicio.setTiempo(timeText.textProperty());
+                servicio.start();
                 break;
         }
     }
     
-    private void fillTraining(){}
+    private void fillTraining(){
+        training = new ArrayList();
+        training.add(warmT);
+        for(int i = 0; i < circN;i++){
+            for(int j = 0; i< exerN;j++){
+                training.add(exerT);
+                if (j != exerN - 1){
+                    training.add(exerRest);
+                }
+            }
+            if(i != circN -1){
+                training.add(circRest);
+            }
+        }
+    }
 
     
 }
@@ -135,10 +183,13 @@ class CronoService extends Service<Void> {
     private boolean stopped = false;//indica si se ha parado el cronometro
     private boolean countdown = false;// indica si esta en cuenta atras
     private long countDownMilis;
+    
+    private ArrayList<Integer> training;
+    
+    private int index;
 
-    CronoService() {
-        //cuenta atras de 30 segundos, deberia de ser configurable
-        this.countDownMilis = 30 * 1000;
+    public CronoService(long currT) {
+        countDownMilis = currT;
     }
 
     @Override
@@ -181,17 +232,16 @@ class CronoService extends Service<Void> {
                 Duration duration = Duration.ofMillis(countDownMilis - totalTime);
                 final long minutos = duration.toMinutes();
                 final long segundos = duration.minusMinutes(minutos).getSeconds();
-                final long centesimas = duration.minusSeconds(segundos).toNanos() / 10000000;
 
                 // no se como parar en la milesima justa
-                if ((segundos == 0) && (centesimas < 10)) {
+                if ((segundos == 0)) {
                     Platform.runLater(() -> {
-                        tiempo.setValue(String.format("%02d", 0) + ":" + String.format("%02d", 0) + ":" + String.format("%02d", 0));
+                        tiempo.setValue(String.format("%02d", minutos) + ":" + String.format("%02d", 0));
                     });
                     return true;
                 } else {
                     Platform.runLater(() -> {
-                        tiempo.setValue(String.format("%02d", minutos) + ":" + String.format("%02d", segundos) + ":" + String.format("%02d", centesimas));
+                        tiempo.setValue(String.format("%02d", minutos) + ":" + String.format("%02d", segundos));
                     });
                     return false;
                 }
@@ -243,6 +293,7 @@ class CronoService extends Service<Void> {
 
     public void restaurarInicio() {
         lastTime = 0; // guarda la hora del ultimo instante
+        startTime = 0;// guarda la hora del instante inicial del intervalo
         stoppedTime = 0;// guarda la duracion del tiempo parados
 
         //indica si se ha parado el cronometro

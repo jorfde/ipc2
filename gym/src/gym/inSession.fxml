@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
    <center>
       <HBox alignment="CENTER" prefHeight="537.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,7 +33,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="restartButton1" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
+                        <Button fx:id="skipButton" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonHandler" styleClass="controlButton" stylesheets="@theCSS.css">
                            <graphic>
                               <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -96,7 +96,7 @@
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="timeText1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You're in warming mode" wrappingWidth="830.419921875">
+            <Text fx:id="partMode" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You're in warming mode" wrappingWidth="830.419921875">
                <font>
                   <Font size="72.0" />
                </font>

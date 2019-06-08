@@ -137,6 +137,8 @@ public class MainController implements Initializable {
             root = (Parent) myLoader.load();
             InSessionController inSessionController = myLoader.<InSessionController>getController();
             inSessionController.initStage(primaryStage);
+            System.out.println(st);
+            System.out.println(g);
             inSessionController.initData(g, st);
             scene = new Scene(root);
             primaryStage.setScene(scene);
