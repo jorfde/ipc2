@@ -86,10 +86,11 @@ public class MainController implements Initializable {
                 myLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 root = (Parent) myLoader.load();
                 SettingsController settingsController = myLoader.<SettingsController>getController();
+                settingsController.passController(this);
                 scene = new Scene(root);
                 aNewStage.setScene(scene);
                 aNewStage.initModality(Modality.APPLICATION_MODAL);
-                aNewStage.show();
+                aNewStage.showAndWait();
                 break;
                 
             case TEMPLATE:  
@@ -121,6 +122,21 @@ public class MainController implements Initializable {
                 scene = new Scene(root);
                 primaryStage.setScene(scene);
                 break;
+        }
+    }
+    
+    public void ok(boolean res) throws IOException{
+        if(res){
+            FXMLLoader myLoader;
+            Parent root;
+            Scene scene;
+            
+            myLoader = new FXMLLoader(getClass().getResource("inSession.fxml"));
+            root = (Parent) myLoader.load();
+            InSessionController inSessionController = myLoader.<InSessionController>getController();
+            inSessionController.initStage(primaryStage);
+            scene = new Scene(root);
+            primaryStage.setScene(scene);
         }
     }
 }

@@ -9,6 +9,7 @@ package gym;
 import accesoBD.AccesoBD;
 import static gym.MainController.DEFAULT;
 import static gym.MainController.GROUP;
+import static gym.MainController.START;
 import static gym.MainController.TEMPLATE;
 import java.io.IOException;
 import java.net.URL;
@@ -72,6 +73,8 @@ public class SettingsController implements Initializable {
     private BooleanProperty aux = new SimpleBooleanProperty(true);
     
     private boolean error = true;
+    
+    private MainController mc;
 
     /**
      * Initializes the controller class.
@@ -127,6 +130,9 @@ public class SettingsController implements Initializable {
                 break;
                 
             case "okButton": 
+                if(mc != null){
+                    mc.ok(true);
+                }
                 exit();
                 break;
         }
@@ -214,5 +220,9 @@ public class SettingsController implements Initializable {
     
     private void exit(){
         cancelButton.getScene().getWindow().hide();
+    }
+    
+    public void passController(MainController mc){
+        this.mc = mc;
     }
 }
