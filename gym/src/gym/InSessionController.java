@@ -86,7 +86,7 @@ public class InSessionController implements Initializable {
     private long initTime;
     
     Image playImg = new Image(getClass().getResource("/images/play-button.png").toString() );
-    Image pauseImg = new Image(getClass().getResource("/images/pause.png").toString() );
+    Image pauseImg = new Image(getClass().getResource("/images/pause_ps.png").toString() );
     @FXML
     private ImageView playImage;
     
@@ -108,24 +108,20 @@ public class InSessionController implements Initializable {
         circuitsProgress.setProgress(0);
         playImage.imageProperty().set(pauseImg);
         timeText.textProperty().addListener((observable, oldVal, newVal) -> { 
-            if(index == size - 1)
-                    aux.set(true);
             if(newVal.equals("00:00")){
                 servicio.cancel();
                 bPlaySoundOnAction();
                 index++;
-                if(index == size + 1){
+                if(index >= size){
                     aux.set(true);
                 }
-                if(index == size){
+                if(index >= size){
                     exercisesProgress.setProgress(1);
                     circuitsProgress.setProgress(1);
                     
                     lastTime = System.currentTimeMillis();
-                    end();
-                    
-                    
-                } else {
+                    end(); 
+                } if(index < size){
                     servicio = new CronoService(training.get(index) * 1000 + 1000);
                     servicio.setTiempo(timeText.textProperty());
                     servicio.start();
@@ -136,7 +132,10 @@ public class InSessionController implements Initializable {
         });
         
         exercisesProgress.progressProperty().addListener((observable, oldVal, newVal) -> { 
-            exercises.setText("");
+            exercises.setText("Exercise (" + countE + " / " + exerN + ")");
+        });
+        circuitsProgress.progressProperty().addListener((observable, oldVal, newVal) -> { 
+            circuits.setText("Circuit (" + countC + " / " + circN + ")");
         });
         
         skipButton.disableProperty().bind(aux);
@@ -175,9 +174,10 @@ public class InSessionController implements Initializable {
                 
             case "skipButton": 
                 index++;
-                if(index == size + 1){
-                    aux.set(true);
+                if(index == size){
+                    
                     timeText.setText("00:00");
+                    aux.set(true);
                     end();
                 }
                 
@@ -192,7 +192,7 @@ public class InSessionController implements Initializable {
                 }
                 break;
         }
-        if (index != size)
+        if (index < size)
             updatePart();
     }
     
@@ -216,6 +216,9 @@ public class InSessionController implements Initializable {
         servicio.start();
         
         size = part.size();
+        
+        circuits.setText("Circuit (" + 0 + " / " + circN + ")");
+        exercises.setText("Exercise (" + 0 + " / " + exerN + ")");
         
         updatePart();
     }
@@ -262,6 +265,7 @@ public class InSessionController implements Initializable {
     }
     
     private void updatePart(){
+        System.out.println(index + "    " + size);
         switch(part.get(index)){
             case WARMING:
                 partMode.setText("WARMING TIME");
