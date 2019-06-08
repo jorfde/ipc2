@@ -71,6 +71,10 @@ public class InSessionController implements Initializable {
     private boolean play = false;
     
     private ArrayList<Integer> training;
+    private ArrayList<Integer> part;
+    public static final int WARMING = 0;
+    public static final int EXERCISE = 1;
+    public static final int REST = 2;
     
     private int index = 0;
     
@@ -84,6 +88,9 @@ public class InSessionController implements Initializable {
     Image pauseImg = new Image(getClass().getResource("/images/pause.png").toString() );
     @FXML
     private ImageView playImage;
+    
+    private int countE;
+    private int countC;
 
     /**
      * Initializes the controller class.
@@ -134,7 +141,8 @@ public class InSessionController implements Initializable {
                 break;
                 
             case "skipButton": 
-                index++;
+                if(index + 1 != size)
+                    index++;
                 servicio.cancel();
                 servicio = new CronoService(training.get(index) * 1000 + 1000);
                 servicio.setTiempo(timeText.textProperty());
@@ -143,6 +151,7 @@ public class InSessionController implements Initializable {
                 playImage.imageProperty().set(pauseImg);
                 break;
         }
+        updatePart();
     }
     
     void initStage(Stage stage) {
@@ -172,21 +181,31 @@ public class InSessionController implements Initializable {
         servicio.start();
         
         size = training.size();
+        
+        updatePart();
     }
     
     private void fillTraining(){
         
         training = new ArrayList();
-        training.add(warmT);
+        part = new ArrayList();
+        if(warmT != 0){
+            training.add(warmT);
+            part.add(WARMING);
+        }
+            
         for(int i = 0; i < circN;i++){
             for(int j = 0; j< exerN;j++){
                 training.add(exerT);
-                if (j != exerN - 1){
+                part.add(EXERCISE);
+                if (j != exerN - 1 && exerRest != 0){
                     training.add(exerRest);
+                    part.add(REST);
                 }
             }
-            if(i != circN -1){
+            if(i != circN -1 && circRest != 0){
                 training.add(circRest);
+                part.add(REST);
             }
         }
     }
@@ -205,6 +224,25 @@ public class InSessionController implements Initializable {
     private void bPlaySoundOnAction() {
         AudioClip plonkSound = new AudioClip(getClass().getResource("/sounds/ZenTemplateBell.wav").toString()    );
         plonkSound.play();
+    }
+    
+    private void updatePart(){
+        switch(part.get(index)){
+            case WARMING:
+                partMode.setText("WARMING TIME");
+                break;
+                
+            case EXERCISE:
+                partMode.setText("EXERCISE TIME");
+                if(index == size -1){
+                    partMode.setText("LAST EXERCISE TIME");
+                }
+                break;
+                
+            case REST:
+                partMode.setText("RESTING TIME");
+                break;
+        }
     }
     
 }
