@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.Grupo;
+import modelo.SesionTipo;
 
 /**
  * FXML Controller class
@@ -125,7 +127,7 @@ public class MainController implements Initializable {
         }
     }
     
-    public void ok(boolean res) throws IOException{
+    public void ok(boolean res, Grupo g, SesionTipo st) throws IOException{
         if(res){
             FXMLLoader myLoader;
             Parent root;
@@ -135,6 +137,7 @@ public class MainController implements Initializable {
             root = (Parent) myLoader.load();
             InSessionController inSessionController = myLoader.<InSessionController>getController();
             inSessionController.initStage(primaryStage);
+            inSessionController.initData(g, st);
             scene = new Scene(root);
             primaryStage.setScene(scene);
         }

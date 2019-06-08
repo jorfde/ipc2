@@ -131,7 +131,7 @@ public class SettingsController implements Initializable {
                 
             case "okButton": 
                 if(mc != null){
-                    mc.ok(true);
+                    mc.ok(true, group, template);
                 }
                 exit();
                 break;
