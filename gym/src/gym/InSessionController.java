@@ -276,6 +276,8 @@ public class InSessionController implements Initializable {
                 if(index == size - 1){
                     partMode.setText("LAST EXERCISE TIME");
                 }
+                updateProgress();
+                countE++;
                 if(countE == exerN){
                     countE = 0;
                     countC++;
@@ -284,8 +286,6 @@ public class InSessionController implements Initializable {
                     }
                     
                 } 
-                updateProgress();
-                countE++;
                 break;
                 
             case REST:

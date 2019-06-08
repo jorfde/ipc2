@@ -371,10 +371,10 @@ public class StatsController implements Initializable {
             case 1:
                 working = new XYChart.Series();
                 working.setName("Working Time");
-                for(int i=0;i < n;i++){
+                for(int i=n-1;i >= 0;i--){
                     Sesion se = sesions.get(i);
                     SesionTipo st = se.getTipo();
-                    working.getData().add(new XYChart.Data<>(se.getFecha().toString(), getWorking(st)));
+                    working.getData().add(0,new XYChart.Data<>(se.getFecha().toString(), getWorking(st)));
                 }
                 lineChart.getData().addAll(working);
                 break;
@@ -382,10 +382,10 @@ public class StatsController implements Initializable {
             case 2:
                 rest = new XYChart.Series();
                 rest.setName("Rest Time");
-                for(int i=0;i < n;i++){
+                for(int i=n-1;i >= 0;i--){
                     Sesion se = sesions.get(i);
                     SesionTipo st = se.getTipo();
-                    rest.getData().add(new XYChart.Data<>(se.getFecha().toString(), getRest(st)));
+                    rest.getData().add(0,new XYChart.Data<>(se.getFecha().toString(), getRest(st)));
                 }
                 lineChart.getData().addAll(rest);
                 break;
@@ -393,10 +393,10 @@ public class StatsController implements Initializable {
             case 3:
                 real = new XYChart.Series();
                 real.setName("Real Time");
-                for(int i=0;i < n;i++){
+                for(int i=n-1;i >= 0;i--){
                     Sesion se = sesions.get(i);
                     SesionTipo st = se.getTipo();
-                    real.getData().add(new XYChart.Data<>(se.getFecha().toString(),se.getDuracion().getSeconds()));
+                    real.getData().add(0,new XYChart.Data<>(se.getFecha().toString(),se.getDuracion().getSeconds()));
                 }
                 lineChart.getData().addAll(real);
                 break;
