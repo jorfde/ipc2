@@ -96,13 +96,13 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="BOTTOM_RIGHT">
+      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="67.0" stylesheets="@theCSS.css" text="OK">
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="71.0" stylesheets="@theCSS.css" text="OK">
                <HBox.margin>
-                  <Insets left="400.0" />
+                  <Insets left="425.0" />
                </HBox.margin></Button>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" stylesheets="@theCSS.css" text="Cancel" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#buttonHandler" prefWidth="71.0" stylesheets="@theCSS.css" text="Cancel" />
          </children>
       </HBox>
    </bottom>
