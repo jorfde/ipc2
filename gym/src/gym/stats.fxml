@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="599.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="728.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.StatsController">
    <center>
       <LineChart fx:id="lineChart" prefHeight="217.0" prefWidth="481.0" BorderPane.alignment="CENTER">
         <xAxis>
@@ -42,6 +42,9 @@
             <CheckBox fx:id="workingTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Work Time" />
             <CheckBox fx:id="restTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Rest Time" />
             <CheckBox fx:id="realTime" mnemonicParsing="false" onAction="#checkBoxHandler" selected="true" text="Real Time" />
+            <Label text="Sessions: " />
+            <TextField fx:id="sessionsField" />
+            <Label fx:id="labelSessions" minWidth="125.0" prefHeight="21.0" prefWidth="125.0" textFill="#f41717" />
             <Button fx:id="returnButton" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="99.0" text="Return" />
          </children>
       </VBox>
