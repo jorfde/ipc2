@@ -188,13 +188,6 @@ public class InSessionController implements Initializable {
             updatePart();
     }
     
-    void initStage(Stage stage) {
-        primaryStage = stage;
-        prevScene = stage.getScene();
-        prevTitle = stage.getTitle();
-        
-    }
-    
     public void initData(Grupo grupo, SesionTipo template){
         this.template = template;
         this.grupo = grupo;

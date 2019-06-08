@@ -53,8 +53,6 @@ public class StatsController implements Initializable {
     @FXML
     private Button okButton;
     @FXML
-    private Button cancelButton;
-    @FXML
     private LineChart<String, Number> lineChart;
     @FXML
     private NumberAxis yAxis;
@@ -241,7 +239,7 @@ public class StatsController implements Initializable {
     }
     
     private void exit(){
-        cancelButton.getScene().getWindow().hide();
+        okButton.getScene().getWindow().hide();
     }
     
     private void createWindow(int mode) throws IOException{
@@ -297,7 +295,6 @@ public class StatsController implements Initializable {
     private void invisibleBox(){
         windowBox.setVisible(false);
         okButton.setPrefHeight(0);
-        cancelButton.setPrefHeight(0);
         windowBox.setPrefHeight(0);
     }
     

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.AddGroupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.AddGroupController">
    <center>
       <VBox prefHeight="230.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -74,7 +74,7 @@
                   <Insets bottom="10.0" left="25.0" right="35.0" top="10.0" />
                </HBox.margin>
             </ImageView>
-            <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new group">
+            <Text fx:id="title" fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new group">
                <font>
                   <Font size="55.0" />
                </font>

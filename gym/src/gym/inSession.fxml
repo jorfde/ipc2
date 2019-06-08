@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="dashboard" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="dashboard" stylesheets="@theCSS.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gym.InSessionController">
    <center>
       <HBox alignment="CENTER" prefHeight="537.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
          <children>
@@ -66,7 +66,7 @@
          <children>
             <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises progress">
+                  <Text fx:id="exercises" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises progress">
                      <font>
                         <Font size="72.0" />
                      </font>
@@ -79,7 +79,7 @@
             </VBox>
             <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <Text fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Circuits progress">
+                  <Text fx:id="circuits" fill="#373737" strokeType="OUTSIDE" strokeWidth="0.0" text="Circuits progress">
                      <font>
                         <Font size="72.0" />
                      </font>

@@ -29,6 +29,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Grupo;
@@ -77,6 +78,8 @@ public class AddGroupController implements Initializable {
     private int sel;
     
     private Alert alert;
+    @FXML
+    private Text title;
     
     
     /**
@@ -115,6 +118,7 @@ public class AddGroupController implements Initializable {
         switch(((Node)event.getSource()).getId()){
             case "okButton": 
                 if(mode == ADD){
+                    title.setText("Add Group");
                     Grupo s = new Grupo();
                     s.setCodigo(codeField.getText());
                     s.setDescripcion(descriptionField.getText());
@@ -125,6 +129,7 @@ public class AddGroupController implements Initializable {
                     groups.add(s);
                     alert.setContentText("You successfully added a GROUP.");
                 } else if(mode == EDIT){
+                    title.setText("Edit Group");
                     Grupo s = new Grupo();
                     s.setCodigo(codeField.getText());
                     s.setDescripcion(descriptionField.getText());

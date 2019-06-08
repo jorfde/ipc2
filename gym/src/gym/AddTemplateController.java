@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import modelo.Grupo;
 import modelo.SesionTipo;
 
@@ -84,6 +85,8 @@ public class AddTemplateController implements Initializable {
     private Alert alert;
     @FXML
     private Label labelCode;
+    @FXML
+    private Text title;
     
     /**
      * Initializes the controller class.
@@ -198,6 +201,7 @@ public class AddTemplateController implements Initializable {
             
             
             if(mode == DETAILS){
+                title.setText("Details of " + template.getCodigo());
                 codeField.setEditable(false);
                 warmingField.setEditable(false);
                 numberEField.setEditable(false);
@@ -208,6 +212,7 @@ public class AddTemplateController implements Initializable {
                 eCode = false;
             }
             if(mode == ADD){
+                title.setText("New Template");
                 codeField.setText(codeField.getText()+"2");
             }
         } else {
